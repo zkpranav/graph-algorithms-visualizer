@@ -12,7 +12,9 @@ function Grid(props) {
                         return (
                             <Node 
                             key={`${node.row}, ${node.column}`} {...node} 
-                            handleClick={props.handleClick} />
+                            handleClick={
+                                props.controllerContext == 'setVertices' ? props.handleClick : () => {}
+                            } />
                         )
                     })
                 )

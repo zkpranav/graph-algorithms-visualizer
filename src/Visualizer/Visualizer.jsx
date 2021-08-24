@@ -2,6 +2,7 @@ import './Visualizer.scss'
 import React, { useEffect, useState } from 'react'
 
 import Grid from '../Grid/Grid'
+import GraphController from '../GraphController/GraphController'
 
 function Visualizer(props) {
 	/**
@@ -10,6 +11,7 @@ function Visualizer(props) {
 	const [grid, setGrid] = useState([])
     const [idCount, setIdCount] = useState(0)
     const [graph, setGraph] = useState([])
+    const [controllerContext, setControllerContext] = useState('setVertices')
 
 	/**
 	 * On mount setup an initial grid
@@ -59,9 +61,43 @@ function Visualizer(props) {
         setGraph([...graph, []])
     }
 
+    /**
+     * Toggle controllerContext 
+     */
+    function handleDone(e) {
+        if (controllerContext == 'setVertices') {
+            setControllerContext('setEdges')
+            initializeAdjecencyMatrix()
+        } else if (controllerContext == 'setEdges') {
+            setControllerContext('done')
+        } else if (controllerContext == 'done') {
+            e.target.disabled = true
+        }
+    }
+
+    /**
+     * Handling changes in controller context by building the adjecency matrix
+     */
+
+    /**
+     * Initializes the adjecency matrix
+     */
+    function initializeAdjecencyMatrix() {
+        const newGraph = graph.slice()
+        newGraph.forEach(function initialEdges(edges) {
+            for (let i = 0; i < newGraph.length; i++) {
+                edges.push(0)
+            }
+        })
+
+        setGraph(newGraph)
+        // console.log(graph)
+    }
+
     return (
         <React.Fragment>
-            <Grid grid={grid} handleClick={handleClick} />
+            <Grid grid={grid} controllerContext={controllerContext} handleClick={handleClick} />
+            <GraphController handleDone={handleDone} />
         </React.Fragment>
     )
 }
