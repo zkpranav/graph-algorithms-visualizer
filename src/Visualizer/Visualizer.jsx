@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react'
 import Grid from '../Grid/Grid'
 import GraphController from '../GraphController/GraphController'
 
+import {initializeAdjecencyMatrix} from '../algorithmInterface.js'
+
 function Visualizer(props) {
 	/**
 	 * State
@@ -67,7 +69,7 @@ function Visualizer(props) {
     function handleDone(e) {
         if (controllerContext == 'setVertices') {
             setControllerContext('setEdges')
-            initializeAdjecencyMatrix()
+            initializeAdjecencyMatrix(graph, setGraph)
         } else if (controllerContext == 'setEdges') {
             setControllerContext('done')
         } else if (controllerContext == 'done') {
@@ -78,21 +80,6 @@ function Visualizer(props) {
     /**
      * Handling changes in controller context by building the adjecency matrix
      */
-
-    /**
-     * Initializes the adjecency matrix
-     */
-    function initializeAdjecencyMatrix() {
-        const newGraph = graph.slice()
-        newGraph.forEach(function initialEdges(edges) {
-            for (let i = 0; i < newGraph.length; i++) {
-                edges.push(0)
-            }
-        })
-
-        setGraph(newGraph)
-        // console.log(graph)
-    }
 
     return (
         <React.Fragment>
