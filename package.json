@@ -4,7 +4,7 @@
   "description": "A visualizer for graph and tree based algorithms",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "parcel serve ./src/index.html"
   },
   "repository": {
     "type": "git",
