@@ -12,13 +12,13 @@ function Node(props) {
 
     return (
         <div 
-        className={`node ${modifiers}`} 
-        onClick={() => {handleClick(props.row, props.column)}} 
-        draggable={props.isActive}
-        onDragStart={(e) => {props.handleDragStart(props.id, e)}}
-        onDragEnd={(e) => {e.target.style.opacity = 1.0}}
-        onDragOver={(e) => {e.preventDefault()}}
-        onDrop={(e) => {props.handleOnDrop(props.id, e)}}
+            className={`node ${modifiers}`} 
+            onClick={() => {handleClick(props.row, props.column)}} 
+            draggable={props.isActive}
+            onDragStart={(e) => {props.handleDragStart(props.id, e)}}
+            onDragEnd={(e) => {e.target.style.opacity = 1.0}}
+            onDragOver={(e) => {e.preventDefault()}}
+            onDrop={(e) => {props.handleOnDrop(props.id, e)}}
         >
             {props.isActive ? props.id : ''}
         </div>

@@ -4,12 +4,16 @@
     align-items: center;
     justify-content: center;
 
-    border: 1px solid #000000;
-    margin: 10px;
+    /**
+    * Temporary style
+    */
+    border: 1px solid black;
+    
 
     &.node--is-active {
         background-color: #ff0000;
         color: #ffffff;
+        border-radius: 50%;
     }
 
     &.node--not-in-graph {

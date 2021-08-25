@@ -59,10 +59,16 @@ function Visualizer(props) {
 		initialSetup()
 	}, [])
 
-    // function handleReset() {
-    //     initialSetup()
-    //     // TODO: setup reference to done button to set disabled=false and change controllerMode to setVertices
-    // }
+    /**
+     * Clear the grid, reset states and enable the done button
+     */
+    function handleReset() {
+        initialSetup()
+        setIdCount(0)
+        setGraph([])
+        setControllerMode('setVertices')
+        document.querySelector('#mode-controller').disabled = false
+    }
 
     /**
      * Event handlers
@@ -89,7 +95,7 @@ function Visualizer(props) {
     function handleDragStart(id, e) {
         e.target.style.opacity = 0.5
         edgeStart = id
-        console.log(edgeStart)
+        // console.log(edgeStart)
     }
 
     /**
@@ -98,17 +104,22 @@ function Visualizer(props) {
     function handleOnDrop(id, e) {
         e.preventDefault()
         edgeEnd = id
-        console.log(edgeEnd)
+        // console.log(edgeEnd)
         addEdge(graph, setGraph, edgeStart, edgeEnd)
     }
 
 
     /**
      * Toggle controllerMode and handle changes in controller context by building the adjecency matrix
-     * Controller Modes - setVertices, setEdges, done
+     * Controller Modes - setVertices, setEdges, done, (TODO: setWeights)
      */
     function handleDone(e) {
         if (controllerMode == 'setVertices') {
+            // If no vertices selected
+            if (graph.length == 0) {
+                return
+            }
+
             // Update context
             setControllerMode('setEdges')
             // Inittialize adj matrix
@@ -126,21 +137,24 @@ function Visualizer(props) {
 
         } else if (controllerMode == 'setEdges') {
             setControllerMode('done')
-
-        } else if (controllerMode == 'done') {
             e.target.disabled = true
+
+            console.log(graph)
         }
     }
 
     return (
         <React.Fragment>
             <Grid grid={grid} 
-            controllerMode={controllerMode} 
-            handleClick={handleClick} 
-            handleDragStart={handleDragStart}
-            handleOnDrop={handleOnDrop}
+                controllerMode={controllerMode} 
+                handleClick={handleClick} 
+                handleDragStart={handleDragStart}
+                handleOnDrop={handleOnDrop}
             />
-            <GraphController handleDone={handleDone} />
+            <GraphController 
+                handleDone={handleDone} 
+                handleReset={handleReset}
+            />
         </React.Fragment>
     )
 }
