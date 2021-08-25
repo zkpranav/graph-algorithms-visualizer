@@ -3,8 +3,13 @@ import React, { useEffect, useState } from 'react'
 
 import Grid from '../Grid/Grid'
 import GraphController from '../GraphController/GraphController'
+import Menu from '../Menu/Menu.jsx'
 
-import {initializeAdjecencyMatrix, addEdge} from '../algorithmInterface.js'
+import {initializeAdjecencyMatrix, 
+    addEdge, 
+    getAlgorithms,
+    getDegreeInterface
+} from '../algorithmInterface.js'
 
 function Visualizer(props) {
     /**
@@ -21,6 +26,7 @@ function Visualizer(props) {
     const [idCount, setIdCount] = useState(0)
     const [graph, setGraph] = useState([])
     const [controllerMode, setControllerMode] = useState('setVertices')
+    const [selectedAlgorithm, setSelectedAlgorithm] = useState('getDegree')
 
     /**
      * Sets up initial state during mount and reset
@@ -84,7 +90,7 @@ function Visualizer(props) {
         setGrid(newGrid)
 
         /**
-         * Recognize to be a vertex in the graph
+         * Recognize to be a vertex in the graph by allocating an edge array
          */
         setGraph([...graph, []])
     }
@@ -106,6 +112,29 @@ function Visualizer(props) {
         edgeEnd = id
         // console.log(edgeEnd)
         addEdge(graph, setGraph, edgeStart, edgeEnd)
+    }
+
+    /**
+     * Keep track of the selected algorithm
+     */
+    function handleChange(e) {
+        setSelectedAlgorithm(e.target.value)
+    }
+
+    /**
+     * Begin the algorithm
+     */
+    function handleBegin(e) {
+        e.target.disabled = true
+        
+        let result
+        switch(selectedAlgorithm) {
+            case 'getDegree': 
+                result = getDegreeInterface(graph)
+                break
+        }
+
+        console.log(result)
     }
 
 
@@ -139,12 +168,19 @@ function Visualizer(props) {
             setControllerMode('done')
             e.target.disabled = true
 
-            console.log(graph)
+            // console.log(graph)
         }
     }
 
     return (
         <React.Fragment>
+            <Menu 
+                selectedAlgorithm={selectedAlgorithm}
+                algorithms={getAlgorithms()}
+                handleChange={handleChange}
+                controllerMode={controllerMode}
+                handleBegin={handleBegin}
+            />
             <Grid grid={grid} 
                 controllerMode={controllerMode} 
                 handleClick={handleClick} 
