@@ -13,4 +13,10 @@ function initializeAdjecencyMatrix(graph, setGraph) {
 	// console.log(graph)
 }
 
-export {initializeAdjecencyMatrix}
+function addEdge(graph, setGraph, edgeStart, edgeEnd) {
+	const newGraph = graph.slice()
+	newGraph[edgeStart][edgeEnd] = 1
+	setGraph(newGraph)
+}
+
+export {initializeAdjecencyMatrix, addEdge}

@@ -4,16 +4,23 @@ import React, { useEffect, useState } from 'react'
 import Grid from '../Grid/Grid'
 import GraphController from '../GraphController/GraphController'
 
-import {initializeAdjecencyMatrix} from '../algorithmInterface.js'
+import {initializeAdjecencyMatrix, addEdge} from '../algorithmInterface.js'
 
 function Visualizer(props) {
+    /**
+     * Non state variables
+     */
+    const GRID_LENGTH = 10
+    let edgeStart
+    let edgeEnd
+
 	/**
 	 * State
 	 */
 	const [grid, setGrid] = useState([])
     const [idCount, setIdCount] = useState(0)
     const [graph, setGraph] = useState([])
-    const [controllerContext, setControllerContext] = useState('setVertices')
+    const [controllerMode, setControllerMode] = useState('setVertices')
 
     /**
      * Sets up initial state during mount and reset
@@ -30,9 +37,9 @@ function Visualizer(props) {
 		}
 
 		const possibleNodes = []
-		for (let i = 0; i < 10; i++) {
+		for (let i = 0; i < GRID_LENGTH; i++) {
             const columnPossibleNodes = []
-			for (let j = 0; j < 10; j++) {
+			for (let j = 0; j < GRID_LENGTH; j++) {
 				columnPossibleNodes.push(createPossibleNode(i, j))
 			}
             possibleNodes.push(columnPossibleNodes)
@@ -54,7 +61,7 @@ function Visualizer(props) {
 
     // function handleReset() {
     //     initialSetup()
-    //     // TODO: setup reference to done button to set disabled=false and change controllerContext to setVertices
+    //     // TODO: setup reference to done button to set disabled=false and change controllerMode to setVertices
     // }
 
     /**
@@ -76,14 +83,34 @@ function Visualizer(props) {
         setGraph([...graph, []])
     }
 
+    /**
+     * Identify edge source vertex
+     */
+    function handleDragStart(id, e) {
+        e.target.style.opacity = 0.5
+        edgeStart = id
+        console.log(edgeStart)
+    }
 
     /**
-     * Toggle controllerContext and handle changes in controller context by building the adjecency matrix
+     * Identify edge destination vertex and update the adjecency matrix
+     */
+    function handleOnDrop(id, e) {
+        e.preventDefault()
+        edgeEnd = id
+        console.log(edgeEnd)
+        addEdge(graph, setGraph, edgeStart, edgeEnd)
+    }
+
+
+    /**
+     * Toggle controllerMode and handle changes in controller context by building the adjecency matrix
+     * Controller Modes - setVertices, setEdges, done
      */
     function handleDone(e) {
-        if (controllerContext == 'setVertices') {
+        if (controllerMode == 'setVertices') {
             // Update context
-            setControllerContext('setEdges')
+            setControllerMode('setEdges')
             // Inittialize adj matrix
             initializeAdjecencyMatrix(graph, setGraph)
             // Filter to only display active nodes
@@ -97,17 +124,22 @@ function Visualizer(props) {
             })
             setGrid(newGrid)
 
-        } else if (controllerContext == 'setEdges') {
-            setControllerContext('done')
-            // TODO: setup drag event handlers and build edges in the adjecency matrix
-        } else if (controllerContext == 'done') {
+        } else if (controllerMode == 'setEdges') {
+            setControllerMode('done')
+
+        } else if (controllerMode == 'done') {
             e.target.disabled = true
         }
     }
 
     return (
         <React.Fragment>
-            <Grid grid={grid} controllerContext={controllerContext} handleClick={handleClick} />
+            <Grid grid={grid} 
+            controllerMode={controllerMode} 
+            handleClick={handleClick} 
+            handleDragStart={handleDragStart}
+            handleOnDrop={handleOnDrop}
+            />
             <GraphController handleDone={handleDone} />
         </React.Fragment>
     )
