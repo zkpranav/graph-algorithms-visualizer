@@ -4,6 +4,10 @@ import React, { useEffect } from 'react'
 import Node from '../Node/Node.jsx'
 
 function Grid(props) {
+    let handleClick = () => {}
+    if (props.controllerContext == 'setVertices') {
+        handleClick = props.handleClick
+    }
     return (
         <div className='grid' >
             {props.grid.map(function renderRows(row) {
@@ -12,9 +16,9 @@ function Grid(props) {
                         return (
                             <Node 
                             key={`${node.row}, ${node.column}`} {...node} 
-                            handleClick={
-                                props.controllerContext == 'setVertices' ? props.handleClick : () => {}
-                            } />
+                            handleClick={handleClick} 
+                            
+                            />
                         )
                     })
                 )

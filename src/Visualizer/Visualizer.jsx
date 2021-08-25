@@ -15,16 +15,17 @@ function Visualizer(props) {
     const [graph, setGraph] = useState([])
     const [controllerContext, setControllerContext] = useState('setVertices')
 
-	/**
-	 * On mount setup an initial grid
-	 */
-	useEffect(function initalSetup() {
-		function createPossibleNode(row, column) {
+    /**
+     * Sets up initial state during mount and reset
+     */
+    function initialSetup() {
+        function createPossibleNode(row, column) {
 			return {
 				id: '',
 				row: row,
 				column: column,
 				isActive: false,
+                modifiers: ''
 			}
 		}
 
@@ -42,7 +43,19 @@ function Visualizer(props) {
 		 * Modify state with initial setup
 		 */
 		setGrid(possibleNodes)
+    }
+
+	/**
+	 * On mount setup an initial grid
+	 */
+	useEffect(() => {
+		initialSetup()
 	}, [])
+
+    // function handleReset() {
+    //     initialSetup()
+    //     // TODO: setup reference to done button to set disabled=false and change controllerContext to setVertices
+    // }
 
     /**
      * Event handlers
@@ -63,23 +76,34 @@ function Visualizer(props) {
         setGraph([...graph, []])
     }
 
+
     /**
-     * Toggle controllerContext 
+     * Toggle controllerContext and handle changes in controller context by building the adjecency matrix
      */
     function handleDone(e) {
         if (controllerContext == 'setVertices') {
+            // Update context
             setControllerContext('setEdges')
+            // Inittialize adj matrix
             initializeAdjecencyMatrix(graph, setGraph)
+            // Filter to only display active nodes
+            const newGrid = grid.slice()
+            newGrid.forEach(function filterActiveNodes(rowArray) {
+                rowArray.forEach((node) => {
+                    if (!node.isActive) {
+                        node.modifiers = ' node--not-in-graph'
+                    }
+                })
+            })
+            setGrid(newGrid)
+
         } else if (controllerContext == 'setEdges') {
             setControllerContext('done')
+            // TODO: setup drag event handlers and build edges in the adjecency matrix
         } else if (controllerContext == 'done') {
             e.target.disabled = true
         }
     }
-
-    /**
-     * Handling changes in controller context by building the adjecency matrix
-     */
 
     return (
         <React.Fragment>

@@ -10,7 +10,7 @@ function initializeAdjecencyMatrix(graph, setGraph) {
 	})
 
 	setGraph(newGraph)
-	console.log(graph)
+	// console.log(graph)
 }
 
 export {initializeAdjecencyMatrix}

@@ -5,11 +5,14 @@
     justify-content: center;
 
     border: 1px solid #000000;
-    border-radius: 50%;
     margin: 10px;
 
     &.node--is-active {
         background-color: #ff0000;
         color: #ffffff;
+    }
+
+    &.node--not-in-graph {
+        visibility: hidden;
     }
 }
