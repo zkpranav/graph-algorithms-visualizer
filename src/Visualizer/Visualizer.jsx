@@ -168,7 +168,7 @@ function Visualizer(props) {
     return (
         <main className='visualizer'>
             <Menu 
-
+                controllerMode={controllerMode}
             />
             <Graph 
                 nodes={nodes}
