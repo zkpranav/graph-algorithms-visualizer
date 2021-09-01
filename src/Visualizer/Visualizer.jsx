@@ -83,11 +83,6 @@ function Visualizer(props) {
          */
         edgeStart.current = undefined
         edgeEnd.current = undefined
-
-        /**
-         * Reset DOM
-         */
-        document.querySelector('#mode-controller').disabled = false
     }
 
     /**
@@ -109,8 +104,6 @@ function Visualizer(props) {
         } else if (controllerMode == 'setEdges') {
             // Update context
             setControllerMode('done')
-            // Disable controller
-            e.target.disabled = 'true'
 
             console.log('--- Adjecency Matrix ---')
             console.log(adjMatrix)
@@ -176,6 +169,7 @@ function Visualizer(props) {
                 handleNodeClick={handleNodeClick}
             />
             <GraphController
+                controllerMode={controllerMode}
                 handleDone={handleDone}
                 handleReset={handleReset}
             />

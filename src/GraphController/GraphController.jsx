@@ -8,6 +8,7 @@ function GraphController(props) {
             <button 
                 id='mode-controller' 
                 onClick={props.handleDone}
+                disabled={props.controllerMode == 'done'}
             >{'Done'}</button>
             <button
                 id='reset'
