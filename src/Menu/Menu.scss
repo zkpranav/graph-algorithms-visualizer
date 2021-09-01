@@ -1,0 +1,45 @@
+@import '../_variables.scss';
+@import '../_mixins.scss';
+
+#menu {
+    margin: 0.5vw;
+    margin-left: 30vw;
+
+    height: 8vh;
+
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: start;
+
+    // temp styles
+    // border: 1px solid #fff;
+
+    #algorithm-selector {
+        height: 50%;
+
+        margin: 0 1%;
+
+        background-color: transparent;
+        color: $primaryColor;
+        border: 3px solid;
+        border-color: $primaryColor;
+
+        transition: color, border-color 0.3s ease-out;
+
+        &:hover:not(:disabled) {
+            color: saturate($secondaryColor, 100%);
+            border-color: saturate($secondaryColor, 100%);
+            background-color: $primaryColor;
+        }
+    }
+
+    #begin {
+        height: 50%;
+        padding: 0 4%;
+
+        margin: 0 1%;
+
+        @include buttonWithBorder();
+    }
+}

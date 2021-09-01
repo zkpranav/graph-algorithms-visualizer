@@ -24,7 +24,7 @@ function Graph(props) {
     }
 
     // TODO: Handle resize
-    let viewportWidth = '75vw'
+    let viewportWidth = '65vw'
     let viewportHeight = '75vh'
 
     return (

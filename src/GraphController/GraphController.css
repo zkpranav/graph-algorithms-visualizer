@@ -1,0 +1,37 @@
+#graph-controller {
+  margin: 2vw;
+  margin-top: 90vh;
+  margin-left: 10vw;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: start;
+}
+#graph-controller button {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  font-size: 2rem;
+  cursor: pointer;
+  color: rgba(205, 45, 45, 0.75);
+  background-color: transparent;
+  border: 3px solid rgba(205, 45, 45, 0.75);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  transition-property: color border-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+#graph-controller button:hover:not(:disabled) {
+  background-color: rgba(205, 45, 45, 0.75);
+  color: rgba(0, 244, 181, 0.75);
+  border-color: rgba(0, 244, 181, 0.75);
+}
+#graph-controller button:disabled {
+  color: #fff;
+  border-color: #fff;
+  cursor: default;
+}
+
+/*# sourceMappingURL=GraphController.css.map */

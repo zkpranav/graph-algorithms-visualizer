@@ -1,7 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import Graph from '../Graph/Graph.jsx'
 import GraphController from '../GraphController/GraphController.jsx'
 import Edge from '../Edge/Edge.jsx'
+import Menu from '../Menu/Menu.jsx'
 
 import {
     addEdge,
@@ -32,6 +33,9 @@ function Visualizer(props) {
         return `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
     }
 
+    /**
+     * Returns node properties
+     */
     function createNewNode(x, y) {
         return {
             id: idCount,
@@ -41,6 +45,9 @@ function Visualizer(props) {
         }
     }
 
+    /**
+     * Populate edges based on adjecency matrix
+     */
     function drawEdge() {
         const [nodeStart] = nodes.filter(node => node.id == edgeStart.current)
         const [nodeEnd] = nodes.filter(node => node.id == edgeEnd.current)
@@ -69,7 +76,7 @@ function Visualizer(props) {
      */
     function handleReset(e) {
         /**
-         * Reset state
+         * Reset states
          */
         setNodes([])
         setIdCount(0)
@@ -114,7 +121,7 @@ function Visualizer(props) {
      * Add nodes on click
      */
     function handleGraphClick(e) {
-        const x = e.clientX - (window.innerWidth * 0.1)
+        const x = e.clientX - (window.innerWidth * 0.3)
         const y = e.clientY - (window.innerHeight * 0.1)
 
         /**
@@ -159,7 +166,10 @@ function Visualizer(props) {
     }
     
     return (
-        <div className='visualizer'>
+        <main className='visualizer'>
+            <Menu 
+
+            />
             <Graph 
                 nodes={nodes}
                 edges={edges}
@@ -173,7 +183,7 @@ function Visualizer(props) {
                 handleDone={handleDone}
                 handleReset={handleReset}
             />
-        </div>
+        </main>
     )
 }
 

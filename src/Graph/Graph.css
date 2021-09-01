@@ -1,8 +1,8 @@
 .graph {
   position: absolute;
   top: 10vh;
-  left: 10vw;
-  width: 75vw;
+  left: 30vw;
+  width: 65vw;
   height: 75vh;
   border: 3px solid #fff;
 }

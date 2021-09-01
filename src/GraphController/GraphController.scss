@@ -2,9 +2,8 @@
 @import '../_mixins.scss';
 
 #graph-controller {
-    margin: 2vw;
-    margin-top: 90vh;
-    margin-left: 10vw;
+    margin-top: 80vh;
+    margin-left: 30vw;
 
     display: flex;
     flex-flow: row nowrap;
@@ -20,11 +19,6 @@
         cursor: pointer;
 
         @include buttonWithBorder();
-        transition: transform 0.3s ease-out;
-
-        &:hover:not(:disabled) {
-            transform: scale(1.1)
-        }
 
         &:disabled {
             color: #fff;
