@@ -1,4 +1,5 @@
 import getDegree from './algorithms/getDegree.js'
+import greedyGraphColoring from './algorithms/greedyGraphColoring.js'
 
 /**
  * Initializes the adjecency matrix
@@ -30,19 +31,27 @@ import getDegree from './algorithms/getDegree.js'
 function getAlgorithms() {
 	return [
 		'Get Degree',
+		'Greedy Graph Coloring'
 	]
 }
 
 /**
  * Algorithm controller to trigger appropriate algorithm based on the argument passed
  */
+let result
 function algorithmController(selectedAlgorithm, adjMatrix) {
 	switch (selectedAlgorithm) {
 		case 'Get Degree':
-			const result = getDegreeInterface(adjMatrix)
+			result = getDegreeInterface(adjMatrix)
 			return [
 				`Degree of the Graph: ${result.graphDegree}`,
 				`Degrees of each Vertex: ${result.vertexDegrees.join(' ')}`
+			]
+		
+		case 'Greedy Graph Coloring':
+			result = greedyGraphColoringInterface(adjMatrix)
+			return [
+				`Chromatic Number: ${result.chromaticNumber}`
 			]
 	}
 }
@@ -62,6 +71,14 @@ function getDegreeInterface(adjMatrix) {
 	return {
 		graphDegree: maxDegree,
 		vertexDegrees: vertexDegrees
+	}
+}
+
+function greedyGraphColoringInterface(adjMatrix) {
+	// TODO: Implement coloring sequence
+	const coloringResult = greedyGraphColoring(adjMatrix)
+	return {
+		chromaticNumber: coloringResult.chromaticNumber
 	}
 }
 

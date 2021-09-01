@@ -182,7 +182,7 @@ function Visualizer(props) {
                 edgeStart.current = undefined
                 edgeEnd.current = undefined
                 setIsFirstNode(true)
-            } else {
+            } else if (adjMatrix[edgeStart.current][+e.target.getAttribute('id')] === 0) {
                 edgeEnd.current = +e.target.getAttribute('id')
                 setIsFirstNode(true)
 
