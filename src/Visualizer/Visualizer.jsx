@@ -108,6 +108,7 @@ function Visualizer(props) {
         setIsFirstNode(true)
         setEdges([])
         setSelectedAlgorithm('Get Degree')
+        setMessage('>>')
 
         /**
          * Reset refs
@@ -148,8 +149,8 @@ function Visualizer(props) {
      * Add nodes on click
      */
     function handleGraphClick(e) {
-        const x = e.clientX - (window.innerWidth * 0.3)
-        const y = e.clientY - (window.innerHeight * 0.1)
+        const x = e.clientX - e.target.getBoundingClientRect().left
+        const y = e.clientY - e.target.getBoundingClientRect().top
 
         /**
          * Modify state by adding a node

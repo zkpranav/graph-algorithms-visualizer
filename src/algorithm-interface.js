@@ -30,7 +30,6 @@ import getDegree from './algorithms/getDegree.js'
 function getAlgorithms() {
 	return [
 		'Get Degree',
-		'Greedy Graph Coloring'
 	]
 }
 

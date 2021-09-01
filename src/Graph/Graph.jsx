@@ -1,6 +1,6 @@
 import './Graph.scss'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import Node from '../Node/Node.jsx'
 
 /**

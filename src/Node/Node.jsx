@@ -8,16 +8,18 @@ import React from 'react'
 function Node(props) {
 
     return (
-        <circle
-            cx={props.cx}
-            cy={props.cy}
-            r='20'
-            fill={props.fill}
+        <React.Fragment key={props.id} >
+            <circle
+                cx={props.cx}
+                cy={props.cy}
+                r='20'
+                fill={props.fill}
 
-            className={'circle' + props.modifiers}
-            id={props.id}
-            onClick={props.handleNodeClick}
-        />
+                className={'circle' + props.modifiers}
+                id={props.id}
+                onClick={props.handleNodeClick}
+            />
+        </React.Fragment>
     )
 }
 
