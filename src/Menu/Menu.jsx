@@ -17,12 +17,31 @@ function Menu(props) {
             break;
     }
 
+    const options = []
+    props.algorithms.forEach(algorithm => {
+        options.push(
+            <option 
+                key={algorithm}
+                value={algorithm} 
+            >
+                {algorithm}
+            </option>
+        )
+    })
+
     return (
         <div id='menu' >
-            <select id='algorithm-selector' value='getDegree' >
-                <option value='getDegree' >Get Degree</option>
+            <select 
+                id='algorithm-selector' 
+                value={props.selectedAlgorithm}
+                onChange={props.handleAlgorithmChange}
+            >
+                {options}
             </select>
-            <button id='begin' >Begin</button>
+            <button 
+                id='begin'
+                disabled={props.controllerMode != 'done'} 
+            >Begin</button>
             <p id='display-text' >{ displayText }</p>
         </div>
     )

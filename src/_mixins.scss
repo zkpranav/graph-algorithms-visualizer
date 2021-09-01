@@ -1,4 +1,6 @@
 @mixin buttonWithBorder () {
+    cursor: pointer;
+    
     color: $primaryColor;
 
     background-color: transparent;

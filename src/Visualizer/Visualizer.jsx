@@ -3,10 +3,12 @@ import Graph from '../Graph/Graph.jsx'
 import GraphController from '../GraphController/GraphController.jsx'
 import Edge from '../Edge/Edge.jsx'
 import Menu from '../Menu/Menu.jsx'
+import InteractiveConsole from '../InteractiveConsole/InteractiveConsole.jsx'
 
 import {
     addEdge,
-    initializeAdjecencyMatrix
+    initializeAdjecencyMatrix,
+    getAlgorithms
 } from '../algorithm-interface.js'
 
 function Visualizer(props) {
@@ -19,6 +21,8 @@ function Visualizer(props) {
     const [controllerMode, setControllerMode] = useState('setVertices')
     const [isFirstNode, setIsFirstNode] = useState(true)
     const [edges, setEdges] = useState([])
+    const [selectedAlgorithm, setSelectedAlgorithm] = useState('')
+    const [message, setMessage] = useState('>>')
 
     /**
      * ref variables
@@ -43,6 +47,11 @@ function Visualizer(props) {
             cy: y,
             fill: getRandomColor()
         }
+    }
+
+    function generateConsoleMessage(msg) {
+        msg = '>> ' + msg
+        setMessage(msg)
     }
 
     /**
@@ -84,6 +93,7 @@ function Visualizer(props) {
         setControllerMode('setVertices')
         setIsFirstNode(true)
         setEdges([])
+        setSelectedAlgorithm('')
 
         /**
          * Reset refs
@@ -164,11 +174,22 @@ function Visualizer(props) {
             }
         }
     }
+
+    /**
+     * Handling algorithm selection
+     */
+    function handleAlgorithmChange(e) {
+        setSelectedAlgorithm(e.target.value)
+    }
+
     
     return (
         <main className='visualizer'>
-            <Menu 
+            <Menu
+                algorithms={getAlgorithms()}
+                selectedAlgorithm={selectedAlgorithm}
                 controllerMode={controllerMode}
+                handleAlgorithmChange={handleAlgorithmChange}
             />
             <Graph 
                 nodes={nodes}
@@ -182,6 +203,9 @@ function Visualizer(props) {
                 controllerMode={controllerMode}
                 handleDone={handleDone}
                 handleReset={handleReset}
+            />
+            <InteractiveConsole
+                message={message}
             />
         </main>
     )
