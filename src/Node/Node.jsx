@@ -14,7 +14,7 @@ function Node(props) {
             r='20'
             fill={props.fill}
 
-            className='circle'
+            className={'circle' + props.modifiers}
             id={props.id}
             onClick={props.handleNodeClick}
         />

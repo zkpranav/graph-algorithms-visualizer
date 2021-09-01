@@ -40,7 +40,8 @@ function Menu(props) {
             </select>
             <button 
                 id='begin'
-                disabled={props.controllerMode != 'done'} 
+                disabled={props.controllerMode != 'done'}
+                onClick={props.handleBegin} 
             >Begin</button>
             <p id='display-text' >{ displayText }</p>
         </div>

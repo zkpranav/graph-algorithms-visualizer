@@ -34,8 +34,41 @@ function getAlgorithms() {
 	]
 }
 
+/**
+ * Algorithm controller to trigger appropriate algorithm based on the argument passed
+ */
+function algorithmController(selectedAlgorithm, adjMatrix) {
+	switch (selectedAlgorithm) {
+		case 'Get Degree':
+			const result = getDegreeInterface(adjMatrix)
+			return [
+				`Degree of the Graph: ${result.graphDegree}`,
+				`Degrees of each Vertex: ${result.vertexDegrees.join(' ')}`
+			]
+	}
+}
+
+/**
+ * Interface methods
+ */
+function getDegreeInterface(adjMatrix) {
+	const vertexDegrees = []
+
+	for (let i = 0; i < adjMatrix.length; i++) {
+		vertexDegrees.push(getDegree(adjMatrix, i))
+	}
+
+	const temp = vertexDegrees.slice()
+	const maxDegree = temp.sort()[temp.length - 1]
+	return {
+		graphDegree: maxDegree,
+		vertexDegrees: vertexDegrees
+	}
+}
+
 export {
     initializeAdjecencyMatrix,
     addEdge,
-	getAlgorithms
+	getAlgorithms,
+	algorithmController
 }

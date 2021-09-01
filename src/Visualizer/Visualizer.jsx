@@ -8,7 +8,8 @@ import InteractiveConsole from '../InteractiveConsole/InteractiveConsole.jsx'
 import {
     addEdge,
     initializeAdjecencyMatrix,
-    getAlgorithms
+    getAlgorithms,
+    algorithmController
 } from '../algorithm-interface.js'
 
 function Visualizer(props) {
@@ -21,7 +22,7 @@ function Visualizer(props) {
     const [controllerMode, setControllerMode] = useState('setVertices')
     const [isFirstNode, setIsFirstNode] = useState(true)
     const [edges, setEdges] = useState([])
-    const [selectedAlgorithm, setSelectedAlgorithm] = useState('')
+    const [selectedAlgorithm, setSelectedAlgorithm] = useState('Get Degree')
     const [message, setMessage] = useState('>>')
 
     /**
@@ -34,7 +35,7 @@ function Visualizer(props) {
      * Utilities
      */
     function getRandomColor() {
-        return `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
+        return `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
     }
 
     /**
@@ -45,13 +46,26 @@ function Visualizer(props) {
             id: idCount,
             cx: x,
             cy: y,
-            fill: getRandomColor()
+            fill: getRandomColor(),
+            modifiers: ''
         }
     }
 
-    function generateConsoleMessage(msg) {
-        msg = '>> ' + msg
-        setMessage(msg)
+    function generateConsoleMessage(msgs) {
+        const messages = msgs.map((msg, index) => {
+            return (
+                <p key={index} >{'>> ' + msg}</p>
+            )
+        })
+
+        setMessage(messages)
+    }
+
+    function addModifier(modifier) {
+        const newNodes = nodes.slice()
+        newNodes.forEach(node => {
+            node.modifiers += ' ' + modifier 
+        })
     }
 
     /**
@@ -93,7 +107,7 @@ function Visualizer(props) {
         setControllerMode('setVertices')
         setIsFirstNode(true)
         setEdges([])
-        setSelectedAlgorithm('')
+        setSelectedAlgorithm('Get Degree')
 
         /**
          * Reset refs
@@ -117,6 +131,9 @@ function Visualizer(props) {
             // Initialize adjecency matrix
             initializeAdjecencyMatrix(adjMatrix, setAdjMatrix)
             // console.log(adjMatrix)
+
+            // Apply modifiers
+            addModifier('hovered-node')
 
         } else if (controllerMode == 'setEdges') {
             // Update context
@@ -182,7 +199,14 @@ function Visualizer(props) {
         setSelectedAlgorithm(e.target.value)
     }
 
-    
+    /**
+     * Handle algorithm execution
+     */
+    function handleBegin() {
+        const result = algorithmController(selectedAlgorithm, adjMatrix)
+        generateConsoleMessage(result)
+    }
+
     return (
         <main className='visualizer'>
             <Menu
@@ -190,6 +214,7 @@ function Visualizer(props) {
                 selectedAlgorithm={selectedAlgorithm}
                 controllerMode={controllerMode}
                 handleAlgorithmChange={handleAlgorithmChange}
+                handleBegin={handleBegin}
             />
             <Graph 
                 nodes={nodes}
