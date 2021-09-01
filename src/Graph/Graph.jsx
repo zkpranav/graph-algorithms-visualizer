@@ -18,7 +18,10 @@ function Graph(props) {
     /**
      * Allow node onClick events only in setEdges ode
      */
-    let handleNodeClick = () => {}
+    let handleNodeClick = (e) => {
+        // Prevent graph's click from firing
+        e.stopPropagation()
+    }
     if (props.controllerMode == 'setEdges') {
         handleNodeClick=props.handleNodeClick
     }
