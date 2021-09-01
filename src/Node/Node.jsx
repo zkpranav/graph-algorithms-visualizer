@@ -6,11 +6,13 @@ import React from 'react'
  * Define how to render a particular node
  */
 function Node(props) {
+
     return (
         <circle
             cx={props.cx}
             cy={props.cy}
-            r='25'
+            r='20'
+            fill={props.fill}
 
             className='circle'
             id={props.id}

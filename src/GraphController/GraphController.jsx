@@ -4,7 +4,7 @@ import React from 'react'
 
 function GraphController(props) {
     return (
-        <div className='graph-controller'>
+        <div id='graph-controller'>
             <button 
                 id='mode-controller' 
                 onClick={props.handleDone}

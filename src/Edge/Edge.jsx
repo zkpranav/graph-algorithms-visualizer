@@ -3,7 +3,6 @@ import './Edge.scss'
 import React from 'react'
 
 function Edge(props) {
-    console.log(props)
     return (
         <line 
             x1={props.x1}

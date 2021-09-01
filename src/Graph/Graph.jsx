@@ -23,10 +23,14 @@ function Graph(props) {
         handleNodeClick=props.handleNodeClick
     }
 
+    // TODO: Handle resize
+    let viewportWidth = '75vw'
+    let viewportHeight = '75vh'
+
     return (
         <svg 
             xmlns='http://www.w3.org/2000/svg'
-            viewport='0 0 75vw 75vh'
+            viewport={`0 0 ${viewportWidth} ${viewportHeight}`}
 
             className='graph'
             onClick={handleGraphClick}

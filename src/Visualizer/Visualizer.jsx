@@ -28,18 +28,23 @@ function Visualizer(props) {
     /**
      * Utilities
      */
+    function getRandomColor() {
+        return `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
+    }
+
     function createNewNode(x, y) {
         return {
             id: idCount,
             cx: x,
-            cy: y
+            cy: y,
+            fill: getRandomColor()
         }
     }
 
     function drawEdge() {
         const [nodeStart] = nodes.filter(node => node.id == edgeStart.current)
         const [nodeEnd] = nodes.filter(node => node.id == edgeEnd.current)
-        console.log(nodeStart, nodeEnd)
+        // console.log(nodeStart, nodeEnd)
 
         const newEdges = edges.slice()
         newEdges.push(
@@ -105,8 +110,9 @@ function Visualizer(props) {
             // Update context
             setControllerMode('done')
             // Disable controller
-            e.target.disabled = true
+            e.target.disabled = 'true'
 
+            console.log('--- Adjecency Matrix ---')
             console.log(adjMatrix)
         }
     }
@@ -159,8 +165,6 @@ function Visualizer(props) {
         }
     }
     
-
-    console.log(edges)
     return (
         <div className='visualizer'>
             <Graph 
