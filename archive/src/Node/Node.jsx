@@ -11,7 +11,8 @@ function Node(props) {
     }
 
     return (
-        <div 
+        <div
+            id={props.isActive ? props.id: Math.random()}
             className={`node ${modifiers}`} 
             onClick={() => {handleClick(props.row, props.column)}} 
             draggable={props.isActive}

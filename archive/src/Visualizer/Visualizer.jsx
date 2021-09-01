@@ -5,7 +5,8 @@ import Grid from '../Grid/Grid'
 import GraphController from '../GraphController/GraphController'
 import Menu from '../Menu/Menu.jsx'
 
-import {initializeAdjecencyMatrix, 
+import {
+    initializeAdjecencyMatrix, 
     addEdge, 
     getAlgorithms,
     getDegreeInterface
@@ -168,12 +169,12 @@ function Visualizer(props) {
             setControllerMode('done')
             e.target.disabled = true
 
-            // console.log(graph)
+            console.log(graph)
         }
     }
 
     return (
-        <React.Fragment>
+        <main>
             <Menu 
                 selectedAlgorithm={selectedAlgorithm}
                 algorithms={getAlgorithms()}
@@ -181,9 +182,10 @@ function Visualizer(props) {
                 controllerMode={controllerMode}
                 handleBegin={handleBegin}
             />
-            <Grid grid={grid} 
-                controllerMode={controllerMode} 
-                handleClick={handleClick} 
+            <Grid 
+                grid={grid}
+                controllerMode={controllerMode}
+                handleClick={handleClick}
                 handleDragStart={handleDragStart}
                 handleOnDrop={handleOnDrop}
             />
@@ -191,7 +193,7 @@ function Visualizer(props) {
                 handleDone={handleDone} 
                 handleReset={handleReset}
             />
-        </React.Fragment>
+        </main>
     )
 }
 

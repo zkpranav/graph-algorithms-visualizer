@@ -15,7 +15,12 @@ function Menu(props) {
         <div>
             <label htmlFor={'select-algorithm'} >
                 Pick an algorithm:{' '}
-                <select name='select-algorithm' value={props.selectedAlgorithm} onChange={props.handleChange} >
+                <select
+                    name='select-algorithm' 
+                    value={props.selectedAlgorithm} 
+                    onChange={props.handleChange}
+                    disabled={props.controllerMode == 'done' ? false : true}
+                >
                     {options}
                 </select>
             </label>
