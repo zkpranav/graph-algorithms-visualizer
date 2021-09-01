@@ -32,6 +32,9 @@ function Graph(props) {
             onClick={handleGraphClick}
         >
             {
+                props.edges
+            }
+            {
                 props.nodes.map((node) => {
                     return (
                         <Node 

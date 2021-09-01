@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react'
 import Graph from '../Graph/Graph.jsx'
 import GraphController from '../GraphController/GraphController.jsx'
+import Edge from '../Edge/Edge.jsx'
+
 import {
     addEdge,
     initializeAdjecencyMatrix
@@ -15,6 +17,7 @@ function Visualizer(props) {
     const [adjMatrix, setAdjMatrix] = useState([])
     const [controllerMode, setControllerMode] = useState('setVertices')
     const [isFirstNode, setIsFirstNode] = useState(true)
+    const [edges, setEdges] = useState([])
 
     /**
      * ref variables
@@ -33,10 +36,28 @@ function Visualizer(props) {
         }
     }
 
+    function drawEdge() {
+        const [nodeStart] = nodes.filter(node => node.id == edgeStart.current)
+        const [nodeEnd] = nodes.filter(node => node.id == edgeEnd.current)
+        console.log(nodeStart, nodeEnd)
+
+        const newEdges = edges.slice()
+        newEdges.push(
+            <Edge 
+                key={`${edgeStart.current}${edgeEnd.current}`}
+                id={`${edgeStart.current}${edgeEnd.current}`}
+                x1={nodeStart.cx}
+                y1={nodeStart.cy}
+                x2={nodeEnd.cx}
+                y2={nodeEnd.cy}
+            />
+        )
+        setEdges(newEdges)
+    }
+
     /**
      * Event Handlers
      */
-
 
     /**
      * Handling reset
@@ -50,6 +71,7 @@ function Visualizer(props) {
         setAdjMatrix([])
         setControllerMode('setVertices')
         setIsFirstNode(true)
+        setEdges([])
 
         /**
          * Reset refs
@@ -84,6 +106,8 @@ function Visualizer(props) {
             setControllerMode('done')
             // Disable controller
             e.target.disabled = true
+
+            console.log(adjMatrix)
         }
     }
 
@@ -117,6 +141,7 @@ function Visualizer(props) {
         if (isFirstNode) {
             edgeStart.current = +e.target.getAttribute('id')
             setIsFirstNode(false)
+
         } else {
             // Check if edge to itself
             if (edgeStart.current == +e.target.getAttribute('id')) {
@@ -128,15 +153,20 @@ function Visualizer(props) {
                 setIsFirstNode(true)
 
                 addEdge(adjMatrix, setAdjMatrix, edgeStart.current, edgeEnd.current)
+
+                drawEdge()
             }
         }
     }
     
-    console.log(adjMatrix)
+
+    console.log(edges)
     return (
         <div className='visualizer'>
             <Graph 
                 nodes={nodes}
+                edges={edges}
+                adjMatrix={adjMatrix}
                 handleGraphClick={handleGraphClick}
                 controllerMode={controllerMode}
                 handleNodeClick={handleNodeClick}
