@@ -3,6 +3,13 @@ import greedyGraphColoring from './algorithms/greedyGraphColoring.js'
 import isComplete from './algorithms/isComplete.js'
 
 /**
+ * Utilities
+ */
+function getRandomColor() {
+	return `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
+}
+
+/**
  * Initializes the adjecency matrix
  */
  function initializeAdjecencyMatrix(adjMatrix, setAdjMatrix) {
@@ -41,7 +48,7 @@ function getAlgorithms() {
  * Algorithm controller to trigger appropriate algorithm based on the argument passed
  */
 let result
-function algorithmController(selectedAlgorithm, adjMatrix) {
+function useAlgorithmController(selectedAlgorithm, nodes, setNodes, adjMatrix) {
 	switch (selectedAlgorithm) {
 		case 'Get Degree':
 			result = getDegreeInterface(adjMatrix)
@@ -51,7 +58,7 @@ function algorithmController(selectedAlgorithm, adjMatrix) {
 			]
 		
 		case 'Greedy Graph Coloring':
-			result = greedyGraphColoringInterface(adjMatrix)
+			result = greedyGraphColoringInterface(nodes, setNodes, adjMatrix)
 			return [
 				`Chromatic Number: ${result.chromaticNumber}`
 			]
@@ -82,9 +89,20 @@ function getDegreeInterface(adjMatrix) {
 	}
 }
 
-function greedyGraphColoringInterface(adjMatrix) {
+function greedyGraphColoringInterface(nodes, setNodes, adjMatrix) {
 	// TODO: Implement coloring sequence
 	const coloringResult = greedyGraphColoring(adjMatrix)
+	const colors = []
+	for (let i = 0; i < coloringResult.noDuplicateColors.length; i++) {
+		colors.push(getRandomColor())
+	}
+
+	const newNodes = nodes.slice()
+	for (let i = 0; i < newNodes.length; i++) {
+		newNodes[i].fill = colors[coloringResult.coloringSequence[i]]
+	}
+	setNodes(newNodes)
+
 	return {
 		chromaticNumber: coloringResult.chromaticNumber
 	}
@@ -94,5 +112,5 @@ export {
     initializeAdjecencyMatrix,
     addEdge,
 	getAlgorithms,
-	algorithmController
+	useAlgorithmController
 }

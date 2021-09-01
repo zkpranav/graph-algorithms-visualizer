@@ -9,7 +9,7 @@ import {
     addEdge,
     initializeAdjecencyMatrix,
     getAlgorithms,
-    algorithmController
+    useAlgorithmController
 } from '../algorithm-interface.js'
 
 function Visualizer(props) {
@@ -22,7 +22,7 @@ function Visualizer(props) {
     const [controllerMode, setControllerMode] = useState('setVertices')
     const [isFirstNode, setIsFirstNode] = useState(true)
     const [edges, setEdges] = useState([])
-    const [selectedAlgorithm, setSelectedAlgorithm] = useState('Get Degree')
+    const [selectedAlgorithm, setSelectedAlgorithm] = useState('Greedy Graph Coloring')
     const [message, setMessage] = useState('>>')
 
     /**
@@ -107,7 +107,7 @@ function Visualizer(props) {
         setControllerMode('setVertices')
         setIsFirstNode(true)
         setEdges([])
-        setSelectedAlgorithm('Get Degree')
+        setSelectedAlgorithm('Greedy Graph Coloring')
         setMessage('>>')
 
         /**
@@ -140,8 +140,11 @@ function Visualizer(props) {
             // Update context
             setControllerMode('done')
 
-            console.log('--- Adjecency Matrix ---')
-            console.log(adjMatrix)
+            // Add modifiers
+            addModifier('done')
+
+            // console.log('--- Adjecency Matrix ---')
+            // console.log(adjMatrix)
         }
     }
 
@@ -204,7 +207,7 @@ function Visualizer(props) {
      * Handle algorithm execution
      */
     function handleBegin() {
-        const result = algorithmController(selectedAlgorithm, adjMatrix)
+        const result = useAlgorithmController(selectedAlgorithm, nodes, setNodes, adjMatrix)
         generateConsoleMessage(result)
     }
 

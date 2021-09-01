@@ -5,11 +5,6 @@
     stroke: #fff;
 }
 
-.hovered-node {
+.hovered-node:not(.done) {
     cursor: pointer;
 }
-
-// .node-id {
-//     font-size: 1.2rem;
-//     color: rgba(32, 21, 19, 1);;
-// }

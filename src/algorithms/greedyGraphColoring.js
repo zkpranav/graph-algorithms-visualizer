@@ -29,7 +29,8 @@ function greedyGraphColoring(adjMatrix) {
     }
     return {
         coloringSequence: coloringSequence,
-        chromaticNumber: noDuplicateColors.length
+        chromaticNumber: noDuplicateColors.length,
+        noDuplicateColors: noDuplicateColors
     };
 }
 export default greedyGraphColoring;
