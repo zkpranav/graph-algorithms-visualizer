@@ -1,5 +1,6 @@
 import getDegree from './algorithms/getDegree.js'
 import greedyGraphColoring from './algorithms/greedyGraphColoring.js'
+import isComplete from './algorithms/isComplete.js'
 
 /**
  * Initializes the adjecency matrix
@@ -31,7 +32,8 @@ import greedyGraphColoring from './algorithms/greedyGraphColoring.js'
 function getAlgorithms() {
 	return [
 		'Get Degree',
-		'Greedy Graph Coloring'
+		'Greedy Graph Coloring',
+		'Is Complete?'
 	]
 }
 
@@ -53,6 +55,12 @@ function algorithmController(selectedAlgorithm, adjMatrix) {
 			return [
 				`Chromatic Number: ${result.chromaticNumber}`
 			]
+
+		case 'Is Complete?':
+			result = isComplete(adjMatrix)
+			return result ?
+						[`Graph is Complete`] :
+						[`Graph is not Complete`]
 	}
 }
 
