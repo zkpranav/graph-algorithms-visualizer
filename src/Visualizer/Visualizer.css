@@ -1,0 +1,40 @@
+#toggle-sidebar {
+  display: none;
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  margin: 2vw;
+  padding: 1vw;
+  height: 96vh;
+  width: 25vw;
+  border: 3px solid #fff;
+  background-color: transparent;
+  color: rgba(50, 194, 157, 0.75);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+}
+#sidebar header {
+  align-self: center;
+}
+#sidebar h1 {
+  margin: 1vw;
+  text-shadow: 2px 2px rgba(205, 45, 45, 0.75);
+  line-height: 2rem;
+}
+
+#vertical-scroll {
+  position: fixed;
+  right: 0;
+  top: 35vh;
+  writing-mode: vertical-lr;
+  padding: 5vh 0;
+  text-transform: uppercase;
+  font-size: 0.5rem;
+  background-color: rgba(205, 45, 45, 0.75);
+  color: rgba(0, 244, 181, 0.75);
+}
+
+/*# sourceMappingURL=Visualizer.css.map */

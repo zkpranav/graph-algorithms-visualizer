@@ -226,6 +226,9 @@ function Visualizer(props) {
                 <Info 
                     algorithms={getAlgorithms()}
                 />
+                <div id='vertical-scroll'>
+                    {'Scroll to reveal console'}
+                </div>
             </div>
             <main id='visualizer'>
                 <Menu

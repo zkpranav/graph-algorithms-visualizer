@@ -10,7 +10,7 @@ function Menu(props) {
             displayText = 'Click to Add a Vertex to the Graph'
             break;
         case 'setEdges':
-            displayText = 'To Add an Edge, first click the Source Vextex then the Destination Vertex'
+            displayText = 'To Add an Edge, first click the Source-Vextex then the Destination-Vertex'
             break;
         case 'done':
             displayText = 'Select an Algorithm and Begin'

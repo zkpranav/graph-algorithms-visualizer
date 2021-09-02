@@ -30,20 +30,21 @@
     h1 {
         margin: 1vw;
         text-shadow: 2px 2px $primaryColor;
+        line-height: 2rem;
     }
 }
 
-// #vertical-scroll {
-//     position: fixed;
-//     right: 0;
-//     top: 35vh;
+#vertical-scroll {
+    position: fixed;
+    right: 0;
+    top: 35vh;
 
-//     writing-mode: vertical-lr;
-//     // transform: rotate(90deg);
-//     padding: 0 0vh;
+    writing-mode: vertical-lr;
+    padding: 5vh 0;
 
-//     text-transform: uppercase;
+    text-transform: uppercase;
 
-//     font-size: 0.5rem;
-//     background-color: $primaryColor;
-// }
+    font-size: 0.5rem;
+    background-color: $primaryColor;
+    color: saturate($secondaryColor, 100%)
+}
