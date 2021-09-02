@@ -1,0 +1,57 @@
+#menu {
+  margin: 0.5vw;
+  margin-left: 30vw;
+  height: 8vh;
+  width: 65vw;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: start;
+}
+#menu #algorithm-selector {
+  height: 50%;
+  margin: 0 2%;
+  background-color: transparent;
+  color: rgba(205, 45, 45, 0.75);
+  border: 3px solid;
+  border-color: rgba(205, 45, 45, 0.75);
+  transition: color, border-color 0.3s ease-out;
+}
+#menu #algorithm-selector:hover:not(:disabled) {
+  color: rgba(0, 244, 181, 0.75);
+  border-color: rgba(0, 244, 181, 0.75);
+  background-color: rgba(205, 45, 45, 0.75);
+}
+#menu #begin {
+  height: 50%;
+  padding: 0 4%;
+  margin: 0 2%;
+  cursor: pointer;
+  color: rgba(205, 45, 45, 0.75);
+  background-color: transparent;
+  border: 3px solid rgba(205, 45, 45, 0.75);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  transition-property: color border-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+#menu #begin:hover:not(:disabled) {
+  background-color: rgba(205, 45, 45, 0.75);
+  color: rgba(0, 244, 181, 0.75);
+  border-color: rgba(0, 244, 181, 0.75);
+}
+#menu #begin:disabled {
+  color: #fff;
+  border-color: #fff;
+  cursor: default;
+}
+#menu #display-text {
+  margin: 0 2%;
+  font-size: 1rem;
+  color: rgba(50, 194, 157, 0.75);
+}
+
+/*# sourceMappingURL=Menu.css.map */

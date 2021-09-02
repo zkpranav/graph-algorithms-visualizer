@@ -14,6 +14,11 @@ function GraphController(props) {
                 id='reset'
                 onClick={props.handleReset}
             >{'Reset'}</button>
+            {/* <button 
+                id='get-graph'
+                disabled={props.controllerMode != 'done'}
+                onClick={props.handleGetOriginalGraph}
+            >{'Original Graph'}</button> */}
         </div>
     )
 }

@@ -1,4 +1,5 @@
 .graph {
+  box-sizing: content-box;
   position: absolute;
   top: 10vh;
   left: 30vw;

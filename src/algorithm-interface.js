@@ -90,7 +90,6 @@ function getDegreeInterface(adjMatrix) {
 }
 
 function greedyGraphColoringInterface(nodes, setNodes, adjMatrix) {
-	// TODO: Implement coloring sequence
 	const coloringResult = greedyGraphColoring(adjMatrix)
 	const colors = []
 	for (let i = 0; i < coloringResult.noDuplicateColors.length; i++) {
@@ -99,7 +98,7 @@ function greedyGraphColoringInterface(nodes, setNodes, adjMatrix) {
 
 	const newNodes = nodes.slice()
 	for (let i = 0; i < newNodes.length; i++) {
-		newNodes[i].fill = colors[coloringResult.coloringSequence[i]]
+		newNodes[i].fill = colors[coloringResult.coloringSequence[i] - 1]
 	}
 	setNodes(newNodes)
 

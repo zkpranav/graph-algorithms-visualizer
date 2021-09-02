@@ -140,6 +140,8 @@ function Visualizer(props) {
             // Update context
             setControllerMode('done')
 
+            // TODO: Archive the original graph
+
             // Add modifiers
             addModifier('done')
 

@@ -1,6 +1,10 @@
 .circle {
-  stroke-width: 3px;
+  stroke-width: 2px;
   stroke: #fff;
+}
+
+.hovered-node:not(.done) {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=Node.css.map */
