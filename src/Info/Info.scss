@@ -1,0 +1,31 @@
+@import '../_variables.scss';
+
+#info {
+    margin-top: 5vw;
+    
+    h2 {
+        font-size: 1.3rem;
+        margin-bottom: 2vw;
+        margin-top: 2vw;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+        text-decoration: underline;
+
+        transition: color 0.3s ease-out;
+
+        &:hover {
+            color: $primaryColor;
+        }
+    }
+
+    ul {
+        padding: 2vw;
+        padding-top: 0;
+
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+}

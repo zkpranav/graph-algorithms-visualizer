@@ -1,9 +1,12 @@
+import './Visualizer.scss'
+
 import React, { useState, useRef } from 'react'
 import Graph from '../Graph/Graph.jsx'
 import GraphController from '../GraphController/GraphController.jsx'
 import Edge from '../Edge/Edge.jsx'
 import Menu from '../Menu/Menu.jsx'
 import InteractiveConsole from '../InteractiveConsole/InteractiveConsole.jsx'
+import Info from '../Info/Info.jsx'
 
 import {
     addEdge,
@@ -214,31 +217,42 @@ function Visualizer(props) {
     }
 
     return (
-        <main className='visualizer'>
-            <Menu
-                algorithms={getAlgorithms()}
-                selectedAlgorithm={selectedAlgorithm}
-                controllerMode={controllerMode}
-                handleAlgorithmChange={handleAlgorithmChange}
-                handleBegin={handleBegin}
-            />
-            <Graph 
-                nodes={nodes}
-                edges={edges}
-                adjMatrix={adjMatrix}
-                handleGraphClick={handleGraphClick}
-                controllerMode={controllerMode}
-                handleNodeClick={handleNodeClick}
-            />
-            <GraphController
-                controllerMode={controllerMode}
-                handleDone={handleDone}
-                handleReset={handleReset}
-            />
-            <InteractiveConsole
-                message={message}
-            />
-        </main>
+        <React.Fragment>
+            <button id='toggle-sidebar'></button>
+            <div id='sidebar'>
+                <header>
+                    <h1>Graphs Galore</h1>
+                </header>
+                <Info 
+                    algorithms={getAlgorithms()}
+                />
+            </div>
+            <main id='visualizer'>
+                <Menu
+                    algorithms={getAlgorithms()}
+                    selectedAlgorithm={selectedAlgorithm}
+                    controllerMode={controllerMode}
+                    handleAlgorithmChange={handleAlgorithmChange}
+                    handleBegin={handleBegin}
+                />
+                <Graph 
+                    nodes={nodes}
+                    edges={edges}
+                    adjMatrix={adjMatrix}
+                    handleGraphClick={handleGraphClick}
+                    controllerMode={controllerMode}
+                    handleNodeClick={handleNodeClick}
+                />
+                <GraphController
+                    controllerMode={controllerMode}
+                    handleDone={handleDone}
+                    handleReset={handleReset}
+                />
+                <InteractiveConsole
+                    message={message}
+                />
+            </main>
+        </React.Fragment>
     )
 }
 

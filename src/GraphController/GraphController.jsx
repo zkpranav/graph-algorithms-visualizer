@@ -3,13 +3,22 @@ import './GraphController.scss'
 import React from 'react'
 
 function GraphController(props) {
+    let doneButtonDisplay = ''
+    if (props.controllerMode == 'setVertices') {
+        doneButtonDisplay = 'Confirm Vertices'
+    } else if (props.controllerMode == 'setEdges') {
+        doneButtonDisplay = 'Confirm Edges'
+    } else {
+        doneButtonDisplay = 'Confirmed'
+    }
+
     return (
-        <div id='graph-controller'>
+        <section id='graph-controller'>
             <button 
                 id='mode-controller' 
                 onClick={props.handleDone}
                 disabled={props.controllerMode == 'done'}
-            >{'Done'}</button>
+            >{doneButtonDisplay}</button>
             <button
                 id='reset'
                 onClick={props.handleReset}
@@ -19,7 +28,7 @@ function GraphController(props) {
                 disabled={props.controllerMode != 'done'}
                 onClick={props.handleGetOriginalGraph}
             >{'Original Graph'}</button> */}
-        </div>
+        </section>
     )
 }
 

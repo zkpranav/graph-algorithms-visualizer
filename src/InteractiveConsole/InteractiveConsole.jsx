@@ -4,9 +4,9 @@ import React from 'react'
 
 function InteractiveConsole(props) {
     return (
-        <div id='interactive-console' >
+        <section id='interactive-console' >
             {props.message}
-        </div>
+        </section>
     )
 }
 

@@ -30,7 +30,7 @@ function Menu(props) {
     })
 
     return (
-        <div id='menu' >
+        <section id='menu' >
             <select 
                 id='algorithm-selector' 
                 value={props.selectedAlgorithm}
@@ -44,7 +44,7 @@ function Menu(props) {
                 onClick={props.handleBegin} 
             >Begin</button>
             <p id='display-text' >{ displayText }</p>
-        </div>
+        </section>
     )
 }
 
