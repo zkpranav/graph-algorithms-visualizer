@@ -6,7 +6,7 @@ import GraphController from '../GraphController/GraphController.jsx'
 import Edge from '../Edge/Edge.jsx'
 import Menu from '../Menu/Menu.jsx'
 import InteractiveConsole from '../InteractiveConsole/InteractiveConsole.jsx'
-import Info from '../Info/Info.jsx'
+import Sidebar from '../Sidebar/Sidebar.jsx'
 
 import {
     addEdge,
@@ -218,18 +218,9 @@ function Visualizer(props) {
 
     return (
         <React.Fragment>
-            <button id='toggle-sidebar'></button>
-            <div id='sidebar'>
-                <header>
-                    <h1>Graphs Galore</h1>
-                </header>
-                <Info 
-                    algorithms={getAlgorithms()}
-                />
-                <div id='vertical-scroll'>
-                    {'Scroll to reveal console'}
-                </div>
-            </div>
+            <Sidebar 
+                algorithms={getAlgorithms()}
+            />
             <main id='visualizer'>
                 <Menu
                     algorithms={getAlgorithms()}

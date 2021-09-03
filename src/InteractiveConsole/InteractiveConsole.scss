@@ -13,3 +13,9 @@
     overflow: hidden;
     overflow-y: scroll;
 }
+
+@media screen and (max-width: 1090px) {
+    #interactive-console {
+        margin-left: 10vw;
+    }
+}

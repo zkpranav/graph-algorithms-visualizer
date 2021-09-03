@@ -5,7 +5,13 @@
   left: 30vw;
   width: 65vw;
   height: 75vh;
-  border: 3px solid #fff;
+  border: 2px solid #fff;
+}
+
+@media screen and (max-width: 1090px) {
+  .graph {
+    left: 10vw;
+  }
 }
 
 /*# sourceMappingURL=Graph.css.map */

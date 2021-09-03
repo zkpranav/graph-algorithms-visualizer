@@ -29,7 +29,7 @@
   cursor: pointer;
   color: rgba(205, 45, 45, 0.75);
   background-color: transparent;
-  border: 3px solid rgba(205, 45, 45, 0.75);
+  border: 2px solid rgba(205, 45, 45, 0.75);
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -52,6 +52,17 @@
   margin: 0 2%;
   font-size: 1rem;
   color: rgba(50, 194, 157, 0.75);
+}
+
+@media screen and (max-width: 700px) {
+  #display-text {
+    display: none;
+  }
+}
+@media screen and (max-width: 1090px) {
+  #menu {
+    margin-left: 10vw;
+  }
 }
 
 /*# sourceMappingURL=Menu.css.map */

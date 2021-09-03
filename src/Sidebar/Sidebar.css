@@ -1,0 +1,93 @@
+#toggle-sidebar {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 2vw;
+  z-index: 0;
+  padding: 0.25vw 0.7vw;
+  font-size: 2.5vw;
+  cursor: pointer;
+  color: rgba(205, 45, 45, 0.75);
+  background-color: transparent;
+  border: 2px solid rgba(205, 45, 45, 0.75);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  transition-property: color border-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+#toggle-sidebar:hover:not(:disabled) {
+  background-color: rgba(205, 45, 45, 0.75);
+  color: rgba(0, 244, 181, 0.75);
+  border-color: rgba(0, 244, 181, 0.75);
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  margin: 2vw 0;
+  padding: 1vw;
+  height: 96vh;
+  width: 25vw;
+  border: 2px solid #fff;
+  background-color: #201513;
+  color: rgba(50, 194, 157, 0.75);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  display: none;
+}
+#sidebar header {
+  align-self: center;
+}
+#sidebar h1 {
+  margin: 1vw;
+  text-shadow: 2px 2px rgba(205, 45, 45, 0.75);
+  line-height: 2rem;
+}
+#sidebar #menu-collapse {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  width: 20%;
+  color: rgba(205, 45, 45, 0.75);
+  padding: 0.25vw 0.7vw;
+  font-size: 2.5vw;
+  font-weight: bold;
+  transform: rotate(-20deg);
+  margin-bottom: 2vw;
+}
+#sidebar #tutorial {
+  margin-top: auto;
+  padding: 2vw;
+  padding-top: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  display: none;
+}
+
+#vertical-scroll {
+  position: fixed;
+  right: 0;
+  top: 35vh;
+  writing-mode: vertical-lr;
+  padding: 5vh 0;
+  text-transform: uppercase;
+  font-size: 0.5rem;
+  background-color: rgba(205, 45, 45, 0.75);
+  color: rgba(0, 244, 181, 0.75);
+}
+
+@media screen and (max-width: 700px) {
+  #sidebar #tutorial {
+    display: block;
+  }
+}
+
+/*# sourceMappingURL=Sidebar.css.map */

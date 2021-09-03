@@ -13,7 +13,7 @@
   cursor: pointer;
   color: rgba(205, 45, 45, 0.75);
   background-color: transparent;
-  border: 3px solid rgba(205, 45, 45, 0.75);
+  border: 2px solid rgba(205, 45, 45, 0.75);
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -31,6 +31,12 @@
   color: #fff;
   border-color: #fff;
   cursor: default;
+}
+
+@media screen and (max-width: 1090px) {
+  #graph-controller {
+    margin-left: 10vw;
+  }
 }
 
 /*# sourceMappingURL=GraphController.css.map */
