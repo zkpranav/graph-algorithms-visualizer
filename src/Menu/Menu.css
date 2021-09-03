@@ -54,14 +54,12 @@
   color: rgba(50, 194, 157, 0.75);
 }
 
-@media screen and (max-width: 700px) {
-  #display-text {
-    display: none;
-  }
-}
 @media screen and (max-width: 1090px) {
   #menu {
     margin-left: 10vw;
+  }
+  #menu #display-text {
+    display: none;
   }
 }
 

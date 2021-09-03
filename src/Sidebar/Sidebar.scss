@@ -9,14 +9,16 @@
 
     position: fixed;
     left: 0;
-    top: 2vw;
+    top: 1vw;
     z-index: 0;
 
-    padding: 0.25vw 0.7vw;
-    font-size: 2.5vw;
+    margin-right: 1rem;
+    padding: 0.2rem;
+    font-size: 2rem;
 
 
     @include buttonWithBorder();
+    border-left: none;
 
     // display: none;
 }
@@ -33,6 +35,7 @@
     width: 25vw;
 
     border: 2px solid #fff;
+    border-left: none;
     background-color: $backgroundColor;
     color: $secondaryColor;
 
@@ -58,8 +61,8 @@
         width: 20%;
 
         color: $primaryColor;
-        padding: 0.25vw 0.7vw;
-        font-size: 2.5vw;
+        padding: 0.5rem;
+        font-size: 2rem;
         font-weight: bold;
 
         transform: rotate(-20deg);
@@ -89,7 +92,7 @@
     top: 35vh;
 
     writing-mode: vertical-lr;
-    padding: 5vh 0;
+    padding: 5vh 0.1rem;
 
     text-transform: uppercase;
 
@@ -98,8 +101,12 @@
     color: saturate($secondaryColor, 100%)
 }
 
-@media screen and (max-width: 700px) {
-    #sidebar #tutorial {
-        display: block;
+@media screen and (max-width: 1090px) {
+    #sidebar {
+        width: 75vw;
+
+        #tutorial {
+            display: block;
+        }
     }
 }

@@ -11,6 +11,7 @@
 @media screen and (max-width: 1090px) {
   .graph {
     left: 10vw;
+    width: 85vw;
   }
 }
 
