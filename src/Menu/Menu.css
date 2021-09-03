@@ -10,6 +10,7 @@
 }
 #menu #algorithm-selector {
   height: 50%;
+  padding: 0 4%;
   margin: 0 2%;
   background-color: transparent;
   color: rgba(205, 45, 45, 0.75);
