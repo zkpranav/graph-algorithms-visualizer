@@ -40,8 +40,6 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: start;
-  overflow: hidden;
-  overflow-y: scroll;
   display: none;
 }
 #sidebar header {
@@ -56,7 +54,7 @@
   cursor: pointer;
   background-color: transparent;
   border: none;
-  width: 20%;
+  width: 10%;
   color: rgba(205, 45, 45, 0.75);
   padding: 0.5rem;
   font-size: 2rem;
@@ -66,7 +64,7 @@
 }
 #sidebar #tutorial {
   margin-top: auto;
-  padding: 2vw;
+  padding: 1.5rem;
   padding-top: none;
   overflow-x: hidden;
   overflow-y: scroll;
