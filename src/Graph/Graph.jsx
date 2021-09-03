@@ -1,4 +1,4 @@
-import './Graph.scss'
+import './Graph.css'
 
 import React, { useEffect } from 'react'
 import Node from '../Node/Node.jsx'

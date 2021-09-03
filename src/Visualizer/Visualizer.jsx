@@ -1,4 +1,4 @@
-import './Visualizer.scss'
+import './Visualizer.css'
 
 import React, { useState, useRef } from 'react'
 import Graph from '../Graph/Graph.jsx'

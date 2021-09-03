@@ -1,4 +1,4 @@
-import './Info.scss'
+import './Info.css'
 
 import React from 'react'
 

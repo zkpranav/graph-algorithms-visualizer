@@ -1,4 +1,4 @@
-import './Menu.scss'
+import './Menu.css'
 
 /**
  * Allow picking an algorithm and render other info

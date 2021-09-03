@@ -1,4 +1,4 @@
-import './InteractiveConsole.scss'
+import './InteractiveConsole.css'
 
 import React from 'react'
 
