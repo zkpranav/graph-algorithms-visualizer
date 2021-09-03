@@ -1,4 +1,4 @@
-import './Edge.css'
+import './Edge.scss'
 
 import React from 'react'
 

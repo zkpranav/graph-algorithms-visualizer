@@ -1,4 +1,4 @@
-import './Node.css'
+import './Node.scss'
 
 import React from 'react'
 

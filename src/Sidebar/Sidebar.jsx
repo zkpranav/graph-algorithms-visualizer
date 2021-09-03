@@ -1,4 +1,4 @@
-import './Sidebar.css'
+import './Sidebar.scss'
 
 import React from 'react'
 import Info from '../Info/Info.jsx'

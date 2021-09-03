@@ -1,4 +1,4 @@
-import './GraphController.css'
+import './GraphController.scss'
 
 import React from 'react'
 
