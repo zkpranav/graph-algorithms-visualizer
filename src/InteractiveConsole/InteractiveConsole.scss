@@ -9,9 +9,6 @@
     color: $secondaryColor;
     background-color: transparent;
     border: 3px solid $primaryColor;
-
-    overflow: hidden;
-    overflow-y: scroll;
 }
 
 @media screen and (max-width: 1090px) {

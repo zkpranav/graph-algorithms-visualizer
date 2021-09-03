@@ -4,8 +4,8 @@
   top: 2vw;
   z-index: 0;
   margin-right: 1rem;
-  padding: 0.2rem;
-  font-size: 2rem;
+  padding: 0.5rem;
+  font-size: 1rem;
   cursor: pointer;
   color: rgba(205, 45, 45, 0.75);
   background-color: transparent;
@@ -65,8 +65,7 @@
   margin-top: auto;
   padding: 1.5rem;
   padding-top: none;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  margin-bottom: 1rem;
   display: none;
 }
 
@@ -78,6 +77,7 @@
   padding: 5vh 0.1rem;
   text-transform: uppercase;
   font-size: 0.5rem;
+  font-weight: bold;
   background-color: rgba(205, 45, 45, 0.75);
   color: rgba(0, 244, 181, 0.75);
 }

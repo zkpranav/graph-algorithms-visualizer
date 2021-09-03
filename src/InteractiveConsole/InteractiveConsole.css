@@ -6,8 +6,6 @@
   color: rgba(50, 194, 157, 0.75);
   background-color: transparent;
   border: 3px solid rgba(205, 45, 45, 0.75);
-  overflow: hidden;
-  overflow-y: scroll;
 }
 
 @media screen and (max-width: 1090px) {
