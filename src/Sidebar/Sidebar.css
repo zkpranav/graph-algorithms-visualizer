@@ -1,8 +1,4 @@
 #toggle-sidebar {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
   position: fixed;
   left: 0;
   top: 2vw;

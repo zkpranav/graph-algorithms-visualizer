@@ -2,11 +2,6 @@
 @import '../_mixins.scss';
 
 #toggle-sidebar {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-
     position: fixed;
     left: 0;
     top: 2vw;
@@ -48,7 +43,7 @@
     }
 
     h1 {
-        margin: 1vw;
+        margin: 1rem;
         text-shadow: 2px 2px $primaryColor;
         line-height: 2rem;
     }

@@ -9,9 +9,8 @@
   justify-content: start;
 }
 #menu #algorithm-selector {
-  height: 50%;
-  padding: 0 4%;
-  margin: 0 2%;
+  padding: 0.5rem;
+  margin: 0.5rem;
   background-color: transparent;
   color: rgba(205, 45, 45, 0.75);
   border: 3px solid;
@@ -24,9 +23,8 @@
   background-color: rgba(205, 45, 45, 0.75);
 }
 #menu #begin {
-  height: 50%;
-  padding: 0 4%;
-  margin: 0 2%;
+  padding: 0.5rem;
+  margin: 0.5rem;
   cursor: pointer;
   color: rgba(205, 45, 45, 0.75);
   background-color: transparent;
@@ -50,7 +48,7 @@
   cursor: default;
 }
 #menu #display-text {
-  margin: 0 2%;
+  margin: 0.5rem;
   font-size: 1rem;
   color: rgba(50, 194, 157, 0.75);
 }

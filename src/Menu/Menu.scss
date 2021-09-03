@@ -13,14 +13,14 @@
     align-items: center;
     justify-content: start;
 
-    $childMargin: 0 2%;
+    $childMargin: 0.5rem;
 
     // temp styles
     // border: 1px solid #fff;
 
     #algorithm-selector {
-        height: 50%;
-        padding: 0 4%;
+        // height: 50%;
+        padding: 0.5rem;
 
         margin: $childMargin;
 
@@ -39,8 +39,8 @@
     }
 
     #begin {
-        height: 50%;
-        padding: 0 4%;
+        // height: 50%;
+        padding: 0.5rem;
 
         margin: $childMargin;
 
