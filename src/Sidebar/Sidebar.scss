@@ -38,6 +38,9 @@
     flex-flow: column nowrap;
     justify-content: start;
 
+    overflow: hidden;
+    overflow-y: scroll;
+
     header {
         align-self: center;
     }
