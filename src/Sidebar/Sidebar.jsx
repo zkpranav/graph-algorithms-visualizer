@@ -31,7 +31,8 @@ function Sidebar(props) {
             >&#9776;</button>
             <div 
                 ref={sidebar}
-                id='sidebar'>
+                id='sidebar'
+            >
                 <button 
                     id='menu-collapse' 
                     onClick={handleMenuCollapse}

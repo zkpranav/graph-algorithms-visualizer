@@ -42,7 +42,7 @@ function Menu(props) {
                 id='begin'
                 disabled={props.controllerMode != 'done'}
                 onClick={props.handleBegin} 
-            >Begin</button>
+            >{'Begin'}</button>
             <p id='display-text' >{ displayText }</p>
         </section>
     )
