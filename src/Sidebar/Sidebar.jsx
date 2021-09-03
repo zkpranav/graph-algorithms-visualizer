@@ -25,10 +25,11 @@ function Sidebar(props) {
 
     return (
         <React.Fragment >
+            {/* &#9776; */}
             <button 
                 id='toggle-sidebar'
                 onClick={handleToggleSidebar}
-            >&#9776;</button>
+            >🌱</button>
             <div 
                 ref={sidebar}
                 id='sidebar'
