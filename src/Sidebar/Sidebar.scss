@@ -13,6 +13,8 @@
 
     @include buttonWithBorder();
     border-left: none;
+
+    background-color: $backgroundColor;
 }
 
 #sidebar {
@@ -66,12 +68,13 @@
         padding: 1.5rem;
         padding-top: none;
 
+        // font-size: 0.5rem;
+
         margin-bottom: 1rem;
 
         display: none;
     }
 
-    overflow: hidden;
     display: none;
 }
 
@@ -95,6 +98,9 @@
     #sidebar {
         width: 75vw;
 
+        overflow: hidden;
+        overflow-y: scroll;
+
         #tutorial {
             display: initial;
         }
@@ -108,13 +114,5 @@
 
     #toggle-sidebar {
         display: none;
-    }
-}
-
-@media screen and (orientation: portrait) and (max-height: 715px) {
-    #sidebar {
-        #tutorial {
-            display: none;
-        }
     }
 }
