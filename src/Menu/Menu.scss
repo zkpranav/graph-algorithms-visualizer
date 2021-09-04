@@ -2,10 +2,9 @@
 @import '../_mixins.scss';
 
 #menu {
-    // margin: 0.5vw;
     margin-left: 30vw;
+    margin-top: 0.5rem;
 
-    height: 8vh;
     width: 65vw;
 
     display: flex;
@@ -13,20 +12,17 @@
     align-items: center;
     justify-content: start;
 
-    $childMargin: 0.5rem;
-
     // temp styles
     // border: 1px solid #fff;
 
     #algorithm-selector {
         // height: 50%;
         padding: 0.5rem;
-
-        margin: $childMargin;
+        margin: 0.5rem;
 
         background-color: transparent;
         color: $primaryColor;
-        border: 3px solid;
+        border: 2px solid;
         border-color: $primaryColor;
 
         transition: color, border-color 0.3s ease-out;
@@ -41,8 +37,7 @@
     #begin {
         // height: 50%;
         padding: 0.5rem;
-
-        margin: $childMargin;
+        margin: 0.5rem;
 
         @include buttonWithBorder();
         
@@ -54,7 +49,7 @@
     }
 
     #display-text {
-        margin: $childMargin;
+        margin: 0.5rem;
 
         font-size: 1rem;
         color: $secondaryColor;

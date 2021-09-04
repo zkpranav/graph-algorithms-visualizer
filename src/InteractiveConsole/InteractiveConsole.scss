@@ -1,14 +1,14 @@
 @import '../_variables.scss';
 
 #interactive-console {
-    margin: 2vw;
+    margin: 1rem;
     margin-left: 30vw;
     padding: 0.3rem;
 
     font-size: 1rem;
     color: $secondaryColor;
     background-color: transparent;
-    border: 3px solid $primaryColor;
+    border: 2px solid $primaryColor;
 }
 
 @media screen and (max-width: 1090px) {
