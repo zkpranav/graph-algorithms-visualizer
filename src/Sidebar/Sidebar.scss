@@ -96,7 +96,8 @@
 
 @media screen and (orientation: portrait) and (max-width: 1090px) {
     #sidebar {
-        width: 75vw;
+        width: 100vw;
+        border-right: none;
 
         overflow: hidden;
         overflow-y: scroll;
