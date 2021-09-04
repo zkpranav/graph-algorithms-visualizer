@@ -58,9 +58,9 @@ function Sidebar(props) {
                     </li>
                 </ol>
             </div>
-            {/* <div id='vertical-scroll'>
+            <div id='vertical-scroll'>
                 {'Scroll to reveal console'}
-            </div> */}
+            </div>
         </React.Fragment>
     )
 }
