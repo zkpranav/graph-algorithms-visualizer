@@ -15,4 +15,11 @@ body {
     background-color: $backgroundColor;
     color: #fff;
     overflow: hidden;
+
+    /**
+    * Addressing bottom nav bar issue on safari
+    */
+    height: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }

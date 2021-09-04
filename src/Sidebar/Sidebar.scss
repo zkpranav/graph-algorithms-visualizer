@@ -4,7 +4,7 @@
 #toggle-sidebar {
     position: fixed;
     left: 0;
-    top: 5vh;
+    top: 2vh;
     z-index: 0;
 
     margin-right: 1rem;
@@ -17,7 +17,7 @@
 
 #sidebar {
     position: fixed;
-    top: 5vh;
+    top: 2vh;
     z-index: 1;
 
     padding: 0.5rem;
@@ -90,12 +90,22 @@
 //     color: saturate($secondaryColor, 100%)
 // }
 
-@media screen and (max-width: 1090px) {
+@media screen and (orientation: portrait) and (max-width: 1090px) {
     #sidebar {
         width: 75vw;
 
         #tutorial {
-            display: block;
+            display: initial;
         }
+    }
+}
+
+@media screen and (orientation: landscape) and (max-width: 1090px) {
+    #sidebar {
+        display: none;
+    }
+
+    #toggle-sidebar {
+        display: none;
     }
 }

@@ -58,8 +58,12 @@
 
 @media screen and (max-width: 1090px) {
     #menu {
-        margin-left: 10vw;
+        margin-left: 15vw;
+    }
+}
 
+@media screen and (orientation: portrait) and (max-width: 1090px) {
+    #menu {
         #display-text {
             display: none;
         }
