@@ -15,6 +15,23 @@
     font-size: 10vw;
 
     background-color: $backgroundColor;
+
+    @include breakpoint(480px) {
+        font-size: 6vw;
+        margin: 0;
+    }
+
+    @include breakpoint(769px) {
+        font-size: 3vw;
+        margin: 0;
+        padding: 0.5vw;
+    }
+
+    @include breakpoint(1366px) {
+        font-size: 2vw;
+        margin: 0;
+        padding: 0.25vw;
+    }
 }
 
 #sidebar {
@@ -24,9 +41,7 @@
     z-index: 2;
 
     padding: 4vw;
-
-    // To align with canvas
-    width: 94.2vw;
+    width: 90vw;
 
     border: 2px solid #fff;
     border-top: 0;
@@ -57,9 +72,26 @@
     opacity: 0;
     transform: translateY(-100%);
     display: none;
+
+    @include breakpoint(769px) {
+        padding: 2vw;
+        width: 40%;
+
+        #menu-collapse {
+            font-size: 4vw;
+        }
+    }
+
+    @include breakpoint(1366px) {
+        padding: 1vw; 
+        
+        #menu-collapse {
+            font-size: 2vw;
+        }
+    }
 }
 
-@media screen and (orientation: landscape) and (max-height: 1023px) {
+@media screen and (orientation: landscape) and (max-height: 786px) {
     #toggle-sidebar {
         display: none;
     }

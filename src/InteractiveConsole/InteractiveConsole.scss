@@ -1,4 +1,5 @@
-@import '../_variables.scss';
+@import '../variables';
+@import '../mixins';
 
 #interactive-console {
     margin-top: 4vw;
@@ -9,4 +10,24 @@
     color: $secondaryColor;
     background-color: transparent;
     // border: 2px solid $primaryColor;
+
+    @include breakpoint(480px) {
+        font-size: 3vw;
+        line-height: 4vw;
+    }
+
+    @include breakpoint(769px) {
+        margin-top: 2vw;
+        padding: 1vw;
+    }
+
+    @include breakpoint(1366px) {
+        margin-top: 1vw;
+        font-size: 1.5vw;
+        line-height: 2vw;
+        
+        width: 90vw;
+        margin-left: 5vw;
+        border: 2px solid $primaryColor;
+    }
 }

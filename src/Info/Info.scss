@@ -1,4 +1,5 @@
 @import '../variables';
+@import '../mixins';
 
 #info {
     margin-top: 4vw;
@@ -24,5 +25,37 @@
 
     ul {
         margin-left: 4vw;
+    }
+
+    @include breakpoint(769px) {
+        margin-top: 2vw;
+        font-size: 3vw;
+        line-height: 4vw;
+
+        h2 {
+            font-size: 4vw;
+            margin: 2vw 0;
+        }
+
+        ul {
+            margin-left: 2vw;
+        }
+    }
+
+    @include breakpoint(1366px) {
+        margin-top: 0;
+        font-size: 1.5vw;
+        line-height: 2vw;
+
+        h2 {
+            font-size: 2vw;
+            margin: 1vw 0;
+        }
+
+        ul {
+            margin-left: 1vw;
+            font-size: 1vw;
+            line-height: 2vw;
+        }
     }
 }

@@ -18,6 +18,18 @@
         color: saturate($secondaryColor, 100%);
         border-color: saturate($secondaryColor, 100%);
     }
+
+    @include breakpoint(480px) {
+        padding: 1vw;
+        margin: 0 2vw;
+        font-size: 3vw;
+    }
+
+    @include breakpoint(1366px) {
+        font-size: 1.5vw;
+        padding: 0.5vw;
+        margin: 0 0.5vw;
+    }
 }
 
 @mixin breakpoint($size) {

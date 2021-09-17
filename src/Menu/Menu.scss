@@ -40,9 +40,40 @@
     }
 
     #display-text {
+        width: 100%;
         text-align: center;
         padding: 2vw 2vw 0 2vw;
         padding-bottom: 0;
         color: $secondaryColor;
+    }
+
+    @include breakpoint(480px) {
+        font-size: 4vw;
+
+        #algorithm-selector {
+            font-size: 3vw;
+            padding: 1vw;
+        }
+    }
+
+    @include breakpoint(1366px) {
+        margin-top: 1vw;
+        font-size: 2vw;
+
+        width: 90vw;
+        margin-left: 5vw;
+        justify-content: start;
+
+        #algorithm-selector {
+            font-size: 1.5vw;
+            padding: 0.5vw;
+            margin: 0 0.5vw;
+        }
+
+        #display-text {
+            width: auto;
+            padding: 0.5vw;
+            margin-left: auto;
+        }
     }
 }

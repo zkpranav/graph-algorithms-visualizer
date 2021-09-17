@@ -1,3 +1,5 @@
+@import '../mixins';
+
 .graph {
     box-sizing: content-box;
     
@@ -8,4 +10,12 @@
     margin-top: 4vw;
 
     border: 2px solid #fff;
+
+    @include breakpoint(769px) {
+        margin-top: 2vw;
+    }
+
+    @include breakpoint(1366px) {
+        margin-top: 1vw;
+    }
 }
