@@ -19,3 +19,9 @@
         border-color: saturate($secondaryColor, 100%);
     }
 }
+
+@mixin breakpoint($size) {
+    @media screen and (min-width: $size) {
+        @content
+    }
+}

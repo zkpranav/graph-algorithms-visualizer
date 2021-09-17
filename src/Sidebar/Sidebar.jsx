@@ -49,9 +49,6 @@ function Sidebar(props) {
                     algorithms={props.algorithms}
                 />
             </div>
-            <div id='vertical-scroll'>
-                {'Scroll to reveal console'}
-            </div>
         </React.Fragment>
     )
 }
