@@ -10,26 +10,33 @@ function Sidebar(props) {
      */
     const sidebar = React.createRef()
 
-    function handleToggleSidebar(e) {
-        sidebar.current.style.display = 'flex'
-        gsap.from(sidebar.current, {
-            x: -sidebar.current.clientWidth,
-            duration: 0.5,
-            ease: 'power3.out'
+    function handleToggleSidebar() {
+        gsap.to(sidebar.current, {
+            display: 'flex',
+            y: 0,
+            opacity: 1,
+            duration: 0.3,
+            ease: 'Power2.easeOut'
         })
     }
 
-    function handleMenuCollapse(e) {
-        sidebar.current.style.display = 'none'
+    function handleMenuCollapse() {
+        gsap.to(sidebar.current, {
+            display: 'none',
+            y: - (sidebar.current.clientHeight + 5),
+            opacity: 0,
+            duration: 0.3,
+            ease: 'Power2.easeIn'
+        })
+
     }
 
     return (
         <React.Fragment >
-            {/* &#9776; */}
             <button 
                 id='toggle-sidebar'
                 onClick={handleToggleSidebar}
-            >🌱</button>
+            >☰</button>
             <div 
                 ref={sidebar}
                 id='sidebar'
@@ -38,25 +45,9 @@ function Sidebar(props) {
                     id='menu-collapse' 
                     onClick={handleMenuCollapse}
                 >{'X'}</button>
-                <header>
-                    <h1>Graphs Galore</h1>
-                </header>
                 <Info 
                     algorithms={props.algorithms}
                 />
-                <ol id='tutorial' >
-                    <li>
-                    Set Vertices of the Graph<br />
-                    To add a Vertex, Simply Click in the rectangular area
-                    </li>
-                    <li>
-                        Set Edges of the Graph<br />
-                        To set and edge, first click the Source-Vertex and then the Destination-Vertex
-                    </li>
-                    <li>
-                        Finally, select an Algorithm and begin
-                    </li>
-                </ol>
             </div>
             <div id='vertical-scroll'>
                 {'Scroll to reveal console'}

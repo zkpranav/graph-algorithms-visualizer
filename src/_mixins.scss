@@ -1,17 +1,15 @@
-@mixin buttonWithBorder () {
+@mixin buttonWithBorder() {
     cursor: pointer;
-    
     color: $primaryColor;
-
     background-color: transparent;
     border: 2px solid $primaryColor;
+    text-transform: uppercase;
 
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: center;
+    padding: 2vw;
+    margin: 0 2vw;
+    font-size: 5vw;
 
-    transition-property: color border-color;
+    transition-property: color, border-color, background-color;
     transition-duration: 0.2s;
     transition-timing-function: ease-out;
 

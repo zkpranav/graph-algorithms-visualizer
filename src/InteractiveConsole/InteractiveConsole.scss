@@ -1,18 +1,12 @@
 @import '../_variables.scss';
 
 #interactive-console {
-    margin: 1rem;
-    margin-left: 30vw;
-    padding: 0.3rem;
+    margin-top: 4vw;
+    padding: 2vw;
 
-    font-size: 1rem;
+    font-size: 5vw;
+    line-height: 6vw;
     color: $secondaryColor;
     background-color: transparent;
     border: 2px solid $primaryColor;
-}
-
-@media screen and (max-width: 1090px) {
-    #interactive-console {
-        margin-left: 7.5vw;
-    }
 }

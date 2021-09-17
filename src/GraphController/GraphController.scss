@@ -1,21 +1,15 @@
-@import '../_variables.scss';
-@import '../_mixins.scss';
+@import '../variables';
+@import '../mixins';
 
 #graph-controller {
-    margin-top: 1rem;
-    margin-left: 30vw;
+    margin-top: 4vw;
 
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
 
     button {
-        padding: 0.5rem;
-        margin: 0.5rem;
-
-        font-size: 1rem;
-
         @include buttonWithBorder();
 
         &:disabled {
@@ -23,11 +17,5 @@
             border-color: #fff;
             cursor: default;
         }
-    }
-}
-
-@media screen and (max-width: 1090px) {
-    #graph-controller {
-        margin-left: 15vw;
     }
 }

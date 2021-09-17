@@ -2,20 +2,10 @@
     box-sizing: content-box;
     
     position: relative;
-    left: 30vw;
-
-    margin-top: 1rem;
-
-    width: 65vw;
+    left: 5vw;
+    width: 90vw;
     height: 65vh;
+    margin-top: 4vw;
 
-    //temp styles
     border: 2px solid #fff;
-}
-
-@media screen and (max-width: 1090px) {
-    .graph {
-        left: 7.5vw;
-        width: 85vw;
-    }
 }

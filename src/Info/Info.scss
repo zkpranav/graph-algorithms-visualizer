@@ -1,12 +1,13 @@
-@import '../_variables.scss';
+@import '../variables';
 
 #info {
-    margin-top: 5vw;
+    margin-top: 4vw;
+    font-size: 5vw;
+    line-height: 6vw;
     
     h2 {
-        font-size: 1.3rem;
-        margin-bottom: 1.5rem;
-        margin-top: 1.5rem;
+        font-size: 8vw;
+        margin: 4vw 0;
     }
 
     a {
@@ -22,7 +23,6 @@
     }
 
     ul {
-        padding: 1.5rem;
-        padding-top: 0;
+        margin-left: 4vw;
     }
 }
