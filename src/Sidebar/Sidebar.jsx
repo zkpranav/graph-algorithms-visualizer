@@ -45,7 +45,7 @@ function Sidebar(props) {
                 <button 
                     id='menu-collapse' 
                     onClick={handleMenuCollapse}
-                >{'X'}</button>
+                >{'x'}</button>
                 <Info 
                     algorithms={props.algorithms}
                 />
