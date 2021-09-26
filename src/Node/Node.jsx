@@ -29,16 +29,16 @@ function Node(props) {
     function handleOnMouseEnter(e) {
         gsap.to(e.target, {
             scale: 1.2,
-            duration: 0.2,
-            ease: 'Power4.easeOut'
+            duration: 0.25,
+            ease: 'Power1.easeInOut'
         })
     }
 
     function handleOnMouseLeave(e) {
         gsap.to(e.target, {
             scale: 1,
-            duration: 0.2,
-            ease: 'Power4.easeIn'
+            duration: 0.25,
+            ease: 'Power1.easeInOut'
         })
     }
 
