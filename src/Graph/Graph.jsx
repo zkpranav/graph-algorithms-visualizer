@@ -47,6 +47,7 @@ function Graph(props) {
                         <Node 
                             key={node.id}
                             {...node}
+                            controllerMode={props.controllerMode}
                             handleNodeClick={handleNodeClick}
                         />
                     )

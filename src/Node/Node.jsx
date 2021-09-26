@@ -6,7 +6,14 @@ import { gsap } from 'gsap'
  * Define how to render a particular node
  */
 function Node(props) {
+    /**
+     * Refs
+     */
     const nodeRef = useRef()
+
+    /**
+     * Animations
+     */
     useLayoutEffect(() => {
         gsap.set(nodeRef.current, {
             'transform-origin': '20px 20px'
@@ -18,6 +25,22 @@ function Node(props) {
             ease: 'Power4.easeOut'
         })
     }, [nodeRef])
+
+    function handleOnMouseEnter(e) {
+        gsap.to(e.target, {
+            scale: 1.2,
+            duration: 0.2,
+            ease: 'Power4.easeOut'
+        })
+    }
+
+    function handleOnMouseLeave(e) {
+        gsap.to(e.target, {
+            scale: 1,
+            duration: 0.2,
+            ease: 'Power4.easeIn'
+        })
+    }
 
     return (
         <React.Fragment key={props.id} >
@@ -31,7 +54,10 @@ function Node(props) {
 
                 className={'circle' + props.modifiers}
                 id={props.id}
+
                 onClick={props.handleNodeClick}
+                onMouseEnter={props.controllerMode == 'setEdges' ? handleOnMouseEnter : () => {}}
+                onMouseLeave={props.controllerMode == 'setEdges' ? handleOnMouseLeave : () => {}}
             />
         </React.Fragment>
     )
