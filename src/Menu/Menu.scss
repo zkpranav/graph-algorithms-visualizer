@@ -45,6 +45,14 @@
         padding: 2vw 2vw 0 2vw;
         padding-bottom: 0;
         color: $secondaryColor;
+
+        @media screen and (max-width: 767px) {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+            height: 8vh;
+        }
     }
 
     @include breakpoint(480px) {
