@@ -6,7 +6,7 @@ import isComplete from './algorithms/isComplete.js'
  * Utilities
  */
 function getRandomColor() {
-	return `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
+	return `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.75)`
 }
 
 /**
