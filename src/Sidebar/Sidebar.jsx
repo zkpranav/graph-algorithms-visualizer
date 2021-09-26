@@ -1,14 +1,15 @@
 import './Sidebar.scss'
 
-import React from 'react'
+import React, { useRef } from 'react'
 import Info from '../Info/Info.jsx'
+import { useRef } from 'react'
 import { gsap } from 'gsap'
 
 function Sidebar(props) {
     /**
      * ref variables
      */
-    const sidebar = React.createRef()
+    const sidebar = useRef()
 
     function handleToggleSidebar() {
         gsap.to(sidebar.current, {
