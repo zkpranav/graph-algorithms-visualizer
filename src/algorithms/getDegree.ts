@@ -1,7 +1,7 @@
 import { gsap } from 'gsap'
 
 const tl = gsap.timeline()
-async function nodeActive(node: HTMLElement) {
+function nodeActive(node: HTMLElement) {
 	return new Promise((resolve, reject) => {
 		tl.to(node, {
 			scale: 1.2,

@@ -39,21 +39,17 @@ exports.__esModule = true;
 var gsap_1 = require("gsap");
 var tl = gsap_1.gsap.timeline();
 function nodeActive(node) {
-    return __awaiter(this, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            return [2 /*return*/, new Promise(function (resolve, reject) {
-                    tl.to(node, {
-                        scale: 1.2,
-                        duration: 0.2,
-                        ease: 'Power1.easeInOut'
-                    });
-                    tl.to(node, {
-                        scale: 1,
-                        duration: 0.2,
-                        ease: 'Power1.easeInOut',
-                        onComplete: resolve
-                    });
-                })];
+    return new Promise(function (resolve, reject) {
+        tl.to(node, {
+            scale: 1.2,
+            duration: 0.2,
+            ease: 'Power1.easeInOut'
+        });
+        tl.to(node, {
+            scale: 1,
+            duration: 0.2,
+            ease: 'Power1.easeInOut',
+            onComplete: resolve
         });
     });
 }
