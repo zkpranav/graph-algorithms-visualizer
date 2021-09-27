@@ -1,7 +1,6 @@
 import getDegree from './algorithms/getDegree.js'
 import greedyGraphColoring from './algorithms/greedyGraphColoring.js'
 import isComplete from './algorithms/isComplete.js'
-import { gsap } from 'gsap'
 
 /**
  * Utilities
@@ -9,24 +8,6 @@ import { gsap } from 'gsap'
 function getRandomColor() {
 	return `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.75)`
 }
-
-const tl = gsap.timeline()
-async function nodeActive(node) {
-	return new Promise((resolve, reject) => {
-		tl.to(node, {
-			scale: 1.2,
-			duration: 0.2,
-			ease: 'Power1.easeInOut'
-		})
-		tl.to(node, {
-			scale: 1,
-			duration: 0.2,
-			ease: 'Power1.easeInOut',
-			onComplete: resolve
-		})
-	})
-}
-
 
 
 /**
@@ -102,8 +83,7 @@ async function getDegreeInterface(adjMatrix, nodeRefs) {
 	const vertexDegrees = []
 
 	for (let i = 0; i < adjMatrix.length; i++) {
-		vertexDegrees.push(getDegree(adjMatrix, i))
-		await nodeActive(nodeRefs.current[i])
+		vertexDegrees.push(await getDegree(adjMatrix, i, nodeRefs.current[i]))
 	}
 
 	const temp = vertexDegrees.slice()
