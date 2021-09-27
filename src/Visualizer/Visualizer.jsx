@@ -20,7 +20,6 @@ function Visualizer(props) {
      * State variables
      */
     const [nodes, setNodes] = useState([])
-    const [idCount, setIdCount] = useState(0)
     const [adjMatrix, setAdjMatrix] = useState([])
     const [controllerMode, setControllerMode] = useState('setVertices')
     const [isFirstNode, setIsFirstNode] = useState(true)
@@ -34,6 +33,7 @@ function Visualizer(props) {
     let edgeStart = useRef(null)
     let edgeEnd = useRef(null)
     let interactiveConsoleRef = useRef(null)
+    
 
     /**
      * Utilities
@@ -47,7 +47,7 @@ function Visualizer(props) {
      */
     function createNewNode(x, y) {
         return {
-            id: idCount,
+            id: nodes.length,
             cx: x,
             cy: y,
             fill: getRandomColor(),
@@ -106,7 +106,6 @@ function Visualizer(props) {
          * Reset states
          */
         setNodes([])
-        setIdCount(0)
         setAdjMatrix([])
         setControllerMode('setVertices')
         setIsFirstNode(true)
@@ -167,7 +166,6 @@ function Visualizer(props) {
         const newNodes = nodes.slice()
         newNodes.push(createNewNode(x, y))
         setNodes(newNodes)
-        setIdCount(idCount + 1)
 
         /**
          * Make space for it in the adjMatrix
