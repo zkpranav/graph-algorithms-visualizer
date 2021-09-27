@@ -1,30 +1,21 @@
 import './Node.scss'
-import React, { useLayoutEffect, useRef } from 'react'
+import React, { forwardRef, useLayoutEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 
 /**
  * Define how to render a particular node
  */
-function Node(props) {
-    /**
-     * Refs
-     */
-    const nodeRef = useRef()
-
+const Node = forwardRef((props, ref) => {
     /**
      * Animations
      */
     useLayoutEffect(() => {
-        gsap.set(nodeRef.current, {
-            'transform-origin': '20px 20px'
-        })
-
-        gsap.from(nodeRef.current, {
+        gsap.from(ref.current[props.id], {
             scale: 0,
             duration: 0.5,
             ease: 'Power4.easeOut'
         })
-    }, [nodeRef])
+    }, [ref])
 
     function handleOnMouseEnter(e) {
         gsap.to(e.target, {
@@ -45,9 +36,11 @@ function Node(props) {
     return (
         <React.Fragment key={props.id} >
             <text 
-                x={props.cx - 5}
+                x={props.cx}
                 y={props.cy + 7.5}
                 className={'text'}
+                textAnchor='middle'
+                alignmentBaseline='middle'
             >{props.id}</text>
             <circle
                 cx={props.cx}
@@ -55,7 +48,7 @@ function Node(props) {
                 r='20'
                 fill={props.fill}
 
-                ref={nodeRef}
+                ref={(el) => {return ref.current[props.id] = el}}
 
                 className={'circle' + props.modifiers}
                 id={props.id}
@@ -66,6 +59,6 @@ function Node(props) {
             />
         </React.Fragment>
     )
-}
+})
 
 export default Node

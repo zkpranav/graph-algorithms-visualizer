@@ -33,6 +33,7 @@ function Visualizer(props) {
     let edgeStart = useRef(null)
     let edgeEnd = useRef(null)
     let interactiveConsoleRef = useRef(null)
+    let nodeRefs = useRef([])
     
 
     /**
@@ -116,8 +117,9 @@ function Visualizer(props) {
         /**
          * Reset refs
          */
-        edgeStart.current = undefined
-        edgeEnd.current = undefined
+        edgeStart.current = null
+        edgeEnd.current = null
+        nodeRefs.current = []
     }
 
     /**
@@ -231,6 +233,7 @@ function Visualizer(props) {
                 />
                 <Graph 
                     nodes={nodes}
+                    nodeRefs={nodeRefs}
                     edges={edges}
                     adjMatrix={adjMatrix}
                     handleGraphClick={handleGraphClick}

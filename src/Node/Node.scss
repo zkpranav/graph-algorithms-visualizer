@@ -4,6 +4,7 @@
     stroke-width: 2px;
     // stroke: #fff;
     stroke: rgba(255, 255, 255, 0.5);
+    transform-origin: 20px 20px;
 }
 
 .hovered-node:not(.done) {
