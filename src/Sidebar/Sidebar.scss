@@ -75,7 +75,8 @@
         width: 40%;
 
         #menu-collapse {
-            font-size: 4vw;
+            font-size: 10vw;
+            line-height: 5vw;
         }
     }
 
@@ -83,12 +84,13 @@
         padding: 1vw; 
         
         #menu-collapse {
-            font-size: 2vw;
+            font-size: 5vw;
+            line-height: 2.5vw;
         }
     }
 }
 
-@media screen and (orientation: landscape) and (max-height: 786px) {
+@media screen and (orientation: landscape) and (max-height: 767px) {
     #toggle-sidebar {
         display: none;
     }
