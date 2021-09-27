@@ -22,10 +22,12 @@
 
         transition: color, border-color 0.3s ease-out;
 
-        &:hover:not(:disabled) {
-            color: saturate($secondaryColor, 100%);
-            border-color: saturate($secondaryColor, 100%);
-            background-color: $primaryColor;
+        @media (hover: hover) {
+            &:hover:not(:disabled) {
+                color: saturate($secondaryColor, 100%);
+                border-color: saturate($secondaryColor, 100%);
+                background-color: $primaryColor;
+            }
         }
     }
 
