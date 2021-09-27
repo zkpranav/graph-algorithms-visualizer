@@ -63,7 +63,7 @@ async function useAlgorithmController(selectedAlgorithm, nodes, setNodes, adjMat
 			]
 		
 		case 'Greedy Graph Coloring':
-			result = greedyGraphColoringInterface(nodes, setNodes, adjMatrix)
+			result = await greedyGraphColoringInterface(nodes, setNodes, adjMatrix, nodeRefs)
 			return [
 				`Chromatic Number: ${result.chromaticNumber}`
 			]
@@ -94,10 +94,11 @@ async function getDegreeInterface(adjMatrix, nodeRefs) {
 	}
 }
 
-function greedyGraphColoringInterface(nodes, setNodes, adjMatrix) {
-	const coloringResult = greedyGraphColoring(adjMatrix)
+async function greedyGraphColoringInterface(nodes, setNodes, adjMatrix, nodeRefs) {
+	const coloringResult = await greedyGraphColoring(adjMatrix, nodeRefs.current)
+
 	const colors = []
-	for (let i = 0; i < coloringResult.noDuplicateColors.length; i++) {
+	for (let i = 0; i < coloringResult.chromaticNumber; i++) {
 		colors.push(getRandomColor())
 	}
 
