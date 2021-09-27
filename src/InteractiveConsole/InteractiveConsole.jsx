@@ -1,13 +1,16 @@
 import './InteractiveConsole.scss'
 
-import React from 'react'
+import React, { forwardRef } from 'react'
 
-function InteractiveConsole(props) {
+const InteractiveConsole = forwardRef((props, ref) => {
     return (
-        <section id='interactive-console' >
+        <section 
+            id='interactive-console'
+            ref={ref}
+        >
             {props.message}
         </section>
     )
-}
+})
 
 export default InteractiveConsole

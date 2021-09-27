@@ -31,8 +31,9 @@ function Visualizer(props) {
     /**
      * ref variables
      */
-    let edgeStart = useRef(undefined)
-    let edgeEnd = useRef(undefined)
+    let edgeStart = useRef(null)
+    let edgeEnd = useRef(null)
+    let interactiveConsoleRef = useRef(null)
 
     /**
      * Utilities
@@ -214,6 +215,7 @@ function Visualizer(props) {
     function handleBegin() {
         const result = useAlgorithmController(selectedAlgorithm, nodes, setNodes, adjMatrix)
         generateConsoleMessage(result)
+        interactiveConsoleRef.current.scrollIntoView()
     }
 
     return (
@@ -244,6 +246,7 @@ function Visualizer(props) {
                 />
                 <InteractiveConsole
                     message={message}
+                    ref={interactiveConsoleRef}
                 />
             </main>
         </React.Fragment>
