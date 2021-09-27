@@ -37,10 +37,9 @@ const Node = forwardRef((props, ref) => {
         <React.Fragment key={props.id} >
             <text 
                 x={props.cx}
-                y={props.cy + 7.5}
+                y={props.cy + 7}
                 className={'text'}
                 textAnchor='middle'
-                alignmentBaseline='middle'
             >{props.id}</text>
             <circle
                 cx={props.cx}
