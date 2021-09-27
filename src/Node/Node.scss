@@ -3,9 +3,14 @@
 .circle {
     stroke-width: 2px;
     // stroke: #fff;
-    stroke: rgba(255, 255, 255, 0.75);
+    stroke: rgba(255, 255, 255, 0.5);
 }
 
 .hovered-node:not(.done) {
     cursor: pointer;
+}
+
+.text {
+    font-size: 20px;
+    fill: #fff;
 }

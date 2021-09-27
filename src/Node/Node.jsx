@@ -44,6 +44,11 @@ function Node(props) {
 
     return (
         <React.Fragment key={props.id} >
+            <text 
+                x={props.cx - 5}
+                y={props.cy + 7.5}
+                className={'text'}
+            >{props.id}</text>
             <circle
                 cx={props.cx}
                 cy={props.cy}
