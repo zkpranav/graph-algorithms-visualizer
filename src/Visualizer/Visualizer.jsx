@@ -1,6 +1,6 @@
 import './Visualizer.scss'
 
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Graph from '../Graph/Graph.jsx'
 import GraphController from '../GraphController/GraphController.jsx'
 import Edge from '../Edge/Edge.jsx'
@@ -26,14 +26,28 @@ function Visualizer(props) {
     const [edges, setEdges] = useState([])
     const [selectedAlgorithm, setSelectedAlgorithm] = useState('Greedy Graph Coloring')
     const [message, setMessage] = useState('>>')
+    const [scrollFLag, setScrollFlag] = useState(false)
 
     /**
-     * ref variables
+     * Ref variables
      */
     let edgeStart = useRef(null)
     let edgeEnd = useRef(null)
     let interactiveConsoleRef = useRef(null)
     let nodeRefs = useRef([])
+
+    /**
+     * Effects
+     */
+    useEffect(() => {
+        if (scrollFLag == true) {
+            interactiveConsoleRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'end'
+            })
+            setScrollFlag(false)
+        }
+    }, [scrollFLag])
     
 
     /**
@@ -215,10 +229,7 @@ function Visualizer(props) {
     function handleBegin() {
         const result = useAlgorithmController(selectedAlgorithm, nodes, setNodes, adjMatrix)
         generateConsoleMessage(result)
-        interactiveConsoleRef.current.scrollIntoView({
-            behavior: 'smooth',
-            block: 'end'
-        })
+        setScrollFlag(true)
     }
 
     return (
