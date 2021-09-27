@@ -13,10 +13,12 @@
     transition-duration: 0.2s;
     transition-timing-function: ease-out;
 
-    &:hover:not(:disabled) {
-        background-color: $primaryColor;
-        color: saturate($secondaryColor, 100%);
-        border-color: saturate($secondaryColor, 100%);
+    @media (hover: hover) {
+        &:hover:not(:disabled) {
+            background-color: $primaryColor;
+            color: saturate($secondaryColor, 100%);
+            border-color: saturate($secondaryColor, 100%);
+        }
     }
 
     @include breakpoint(480px) {
