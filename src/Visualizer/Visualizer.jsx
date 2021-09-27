@@ -215,7 +215,10 @@ function Visualizer(props) {
     function handleBegin() {
         const result = useAlgorithmController(selectedAlgorithm, nodes, setNodes, adjMatrix)
         generateConsoleMessage(result)
-        interactiveConsoleRef.current.scrollIntoView()
+        interactiveConsoleRef.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'end'
+        })
     }
 
     return (
