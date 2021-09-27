@@ -1,6 +1,7 @@
 import getDegree from './algorithms/getDegree.js'
 import greedyGraphColoring from './algorithms/greedyGraphColoring.js'
 import isComplete from './algorithms/isComplete.js'
+import { gsap } from 'gsap'
 
 /**
  * Utilities
@@ -8,6 +9,29 @@ import isComplete from './algorithms/isComplete.js'
 function getRandomColor() {
 	return `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.75)`
 }
+
+const tl = gsap.timeline()
+async function nodeActive(node) {
+	return new Promise((resolve, reject) => {
+		tl.to(node, {
+			scale: 1.2,
+			duration: 0.2,
+			ease: 'Power1.easeInOut'
+		})
+		tl.to(node, {
+			scale: 1,
+			duration: 0.2,
+			ease: 'Power1.easeInOut',
+			onComplete: resolve
+		})
+	})
+}
+
+
+
+/**
+ * API methods
+ */
 
 /**
  * Initializes the adjecency matrix
@@ -48,10 +72,10 @@ function getAlgorithms() {
  * Algorithm controller to trigger appropriate algorithm based on the argument passed
  */
 let result
-function useAlgorithmController(selectedAlgorithm, nodes, setNodes, adjMatrix) {
+async function useAlgorithmController(selectedAlgorithm, nodes, setNodes, adjMatrix, nodeRefs) {
 	switch (selectedAlgorithm) {
 		case 'Get Degree':
-			result = getDegreeInterface(adjMatrix)
+			result = await getDegreeInterface(adjMatrix, nodeRefs)
 			return [
 				`Degree of the Graph: ${result.graphDegree}`,
 				`Degrees of each Vertex: ${result.vertexDegrees.join(' ')}`
@@ -74,11 +98,12 @@ function useAlgorithmController(selectedAlgorithm, nodes, setNodes, adjMatrix) {
 /**
  * Interface methods
  */
-function getDegreeInterface(adjMatrix) {
+async function getDegreeInterface(adjMatrix, nodeRefs) {
 	const vertexDegrees = []
 
 	for (let i = 0; i < adjMatrix.length; i++) {
 		vertexDegrees.push(getDegree(adjMatrix, i))
+		await nodeActive(nodeRefs.current[i])
 	}
 
 	const temp = vertexDegrees.slice()

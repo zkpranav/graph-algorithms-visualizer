@@ -127,6 +127,7 @@ function Visualizer(props) {
         setEdges([])
         setSelectedAlgorithm('Greedy Graph Coloring')
         setMessage('>>')
+        setScrollFlag(false)
 
         /**
          * Reset refs
@@ -226,8 +227,8 @@ function Visualizer(props) {
     /**
      * Handle algorithm execution
      */
-    function handleBegin() {
-        const result = useAlgorithmController(selectedAlgorithm, nodes, setNodes, adjMatrix)
+    async function handleBegin() {
+        const result = await useAlgorithmController(selectedAlgorithm, nodes, setNodes, adjMatrix, nodeRefs)
         generateConsoleMessage(result)
         setScrollFlag(true)
     }
