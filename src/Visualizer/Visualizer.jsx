@@ -227,10 +227,12 @@ function Visualizer(props) {
     /**
      * Handle algorithm execution
      */
-    async function handleBegin() {
+    async function handleBegin(e) {
+        e.target.disabled = true
         const result = await useAlgorithmController(selectedAlgorithm, nodes, setNodes, adjMatrix, nodeRefs)
         generateConsoleMessage(result)
         setScrollFlag(true)
+        e.target.disabled = false
     }
 
     return (
