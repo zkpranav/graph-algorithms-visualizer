@@ -27,7 +27,11 @@ function Visualizer(props) {
     const [selectedAlgorithm, setSelectedAlgorithm] = useState('Greedy Graph Coloring')
     const [message, setMessage] = useState('>>')
     const [scrollFLag, setScrollFlag] = useState(false)
-    const [didReset, setDidReset] = useState(false)
+
+    /**
+     * Local Variables
+     */
+    let didReset = false
 
     /**
      * Ref variables
@@ -129,7 +133,7 @@ function Visualizer(props) {
         setSelectedAlgorithm('Greedy Graph Coloring')
         setMessage('>>')
         setScrollFlag(false)
-        setDidReset(true)
+        didReset = true
 
         /**
          * Reset refs
@@ -231,17 +235,24 @@ function Visualizer(props) {
      */
     async function handleBegin(e) {
         e.target.disabled = true
-        const result = await useAlgorithmController(selectedAlgorithm, nodes, setNodes, adjMatrix, nodeRefs)
+        const result = await useAlgorithmController(selectedAlgorithm, nodes, adjMatrix, nodeRefs)
+        const [newNodes, ...msgs] = result
         
         // To avoid async algorithms from displaying result after reset
         if (!didReset) {
-            generateConsoleMessage(result)
+            // Modifying nodes state with new nodes
+            if (!(Object.is(newNodes, null))) {
+                setNodes(newNodes)
+            }
+            generateConsoleMessage(msgs)
             setScrollFlag(true)
-        } else {
-            setDidReset(false)
-        }
 
-        e.target.disabled = false
+            // Should only be set to not be disabled if no reset
+            e.target.disabled = false
+        } else {
+            didReset = false
+            // Button should stay disabled if reset
+        }
     }
 
     return (

@@ -53,26 +53,28 @@ function getAlgorithms() {
  * Algorithm controller to trigger appropriate algorithm based on the argument passed
  */
 let result
-async function useAlgorithmController(selectedAlgorithm, nodes, setNodes, adjMatrix, nodeRefs) {
+async function useAlgorithmController(selectedAlgorithm, nodes, adjMatrix, nodeRefs) {
 	switch (selectedAlgorithm) {
 		case 'Get Degree':
 			result = await getDegreeInterface(adjMatrix, nodeRefs)
 			return [
+				null,
 				`Degree of the Graph: ${result.graphDegree}`,
 				`Degrees of each Vertex: ${result.vertexDegrees.join(' ')}`
 			]
 		
 		case 'Greedy Graph Coloring':
-			result = await greedyGraphColoringInterface(nodes, setNodes, adjMatrix, nodeRefs)
+			result = await greedyGraphColoringInterface(nodes, adjMatrix, nodeRefs)
 			return [
+				result.newNodes,
 				`Chromatic Number: ${result.chromaticNumber}`
 			]
 
 		case 'Is Complete?':
 			result = isComplete(adjMatrix)
 			return result ?
-						[`Graph is Complete`] :
-						[`Graph is not Complete`]
+						[null, `Graph is Complete`] :
+						[null, `Graph is not Complete`]
 	}
 }
 
@@ -94,7 +96,7 @@ async function getDegreeInterface(adjMatrix, nodeRefs) {
 	}
 }
 
-async function greedyGraphColoringInterface(nodes, setNodes, adjMatrix, nodeRefs) {
+async function greedyGraphColoringInterface(nodes, adjMatrix, nodeRefs) {
 	const coloringResult = await greedyGraphColoring(adjMatrix, nodeRefs.current)
 
 	const colors = []
@@ -106,9 +108,9 @@ async function greedyGraphColoringInterface(nodes, setNodes, adjMatrix, nodeRefs
 	for (let i = 0; i < newNodes.length; i++) {
 		newNodes[i].fill = colors[coloringResult.coloringSequence[i] - 1]
 	}
-	setNodes(newNodes)
 
 	return {
+		newNodes,
 		chromaticNumber: coloringResult.chromaticNumber
 	}
 }
