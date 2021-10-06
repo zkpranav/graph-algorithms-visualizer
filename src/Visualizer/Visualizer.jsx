@@ -27,6 +27,7 @@ function Visualizer(props) {
     const [selectedAlgorithm, setSelectedAlgorithm] = useState('Greedy Graph Coloring')
     const [message, setMessage] = useState('>>')
     const [scrollFLag, setScrollFlag] = useState(false)
+    const [didReset, setDidReset] = useState(false)
 
     /**
      * Ref variables
@@ -128,6 +129,7 @@ function Visualizer(props) {
         setSelectedAlgorithm('Greedy Graph Coloring')
         setMessage('>>')
         setScrollFlag(false)
+        setDidReset(true)
 
         /**
          * Reset refs
@@ -230,8 +232,15 @@ function Visualizer(props) {
     async function handleBegin(e) {
         e.target.disabled = true
         const result = await useAlgorithmController(selectedAlgorithm, nodes, setNodes, adjMatrix, nodeRefs)
-        generateConsoleMessage(result)
-        setScrollFlag(true)
+        
+        // To avoid async algorithms from displaying result after reset
+        if (!didReset) {
+            generateConsoleMessage(result)
+            setScrollFlag(true)
+        } else {
+            setDidReset(false)
+        }
+
         e.target.disabled = false
     }
 
