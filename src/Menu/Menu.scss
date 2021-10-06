@@ -19,6 +19,7 @@
         color: $primaryColor;
         border: 2px solid $primaryColor;
         text-transform: uppercase;
+        outline: none;
 
         transition: color, border-color 0.3s ease-out;
 
